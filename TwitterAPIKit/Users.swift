@@ -14,13 +14,51 @@ import Foundation
 // https://dev.twitter.com/overview/api/users
 //
 //
-public struct Users {
+public enum Users {
+    case WithStatus(UserInfo, Tweets)
+    case WithoutStatus(UserInfo)
+    
+    public init?(dictionary _dictionary: [String: AnyObject]?){
+        guard let
+            dictionary = _dictionary,
+            userInfo = UserInfo(dictionary: dictionary) else {
+                
+            return nil
+        }
+        
+        if let status = Tweets(dictionary: dictionary["status"] as? [String: AnyObject]) {
+            self = .WithStatus(userInfo, status)
+        }else {
+            self = .WithoutStatus(userInfo)
+        }
+    }
+}
+
+extension Users: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .WithStatus(let userInfo, let tweets):
+            var str = "[.WithStatus]\n"
+            str += "user: " + userInfo.description + ", status: " + tweets.description
+            
+            return str
+            
+        case .WithoutStatus(let userInfo):
+            var str = "[.WithoutStatus]\n"
+            str += "user: " + userInfo.description
+            
+            return str
+        }
+    }
+}
+
+public struct UserInfo {
     
     public let contributorsEnabled: Bool?
     public let createdAt: String?
     public let defaultProfile: Bool?
     public let defaultProfileImage: Bool?
-    public let description: String?
+    public let innerDescription: String?
     public let entities: Entities?
     public let favouritesCount: Int?
     public let followRequestSent: Bool?
@@ -51,7 +89,7 @@ public struct Users {
     public let protected: Bool?
     public let screenName: String?
     public let showAllInlineMedia: Bool?
-    public let status: Tweets?
+    //public let status: Tweets?
     public let statusesCount: Int?
     public let timeZone: String?
     public let url: String?
@@ -60,7 +98,11 @@ public struct Users {
     public let withheldInCountries: String?
     public let withheldScope: String?
     
-    public init?(dictionary: [String: AnyObject]){
+    public init?(dictionary _dictionary: [String: AnyObject]?){
+        guard let dictionary = _dictionary else {
+            return nil
+        }
+        
         guard let
             id = dictionary["id"] as? Int,
             idStr = dictionary["id_str"] as? String else {
@@ -72,14 +114,8 @@ public struct Users {
         self.createdAt = dictionary["created_at"] as? String
         self.defaultProfile = dictionary["default_profile"] as? Bool
         self.defaultProfileImage = dictionary["default_profile_image"] as? Bool
-        self.description = dictionary["description"] as? String
-        
-        if let entities = dictionary["entities"] as? [String: AnyObject] {
-            self.entities = Entities(dictionary: entities)
-        }else {
-            self.entities = nil
-        }
-        
+        self.innerDescription = dictionary["description"] as? String
+        self.entities = Entities(dictionary: dictionary["entities"] as? [String: AnyObject])
         self.favouritesCount = dictionary["favourites_count"] as? Int
         self.followRequestSent = dictionary["follow_request_sent"] as? Bool
         self.followersCount = dictionary["followers_count"] as? Int
@@ -109,13 +145,7 @@ public struct Users {
         self.protected = dictionary["protected"] as? Bool
         self.screenName = dictionary["screen_name"] as? String
         self.showAllInlineMedia = dictionary["show_all_inline_media"] as? Bool
-        
-        if let status = dictionary["status"] as? [String: AnyObject] {
-            self.status = Tweets(dictionary: status)
-        }else {
-            self.status = nil
-        }
-        
+        //self.status = TweetsInfo(dictionary: dictionary["status"] as? [String: AnyObject])
         self.statusesCount = dictionary["statuses_count"] as? Int
         self.timeZone = dictionary["time_zone"] as? String
         self.url = dictionary["url"] as? String
@@ -123,5 +153,11 @@ public struct Users {
         self.verified = dictionary["verified"] as? Bool
         self.withheldInCountries = dictionary["withheld_in_countries"] as? String
         self.withheldScope = dictionary["withheld_scope"] as? String
+    }
+}
+
+extension UserInfo: CustomStringConvertible {
+    public var description: String {
+        return "UserInfo: { id: " + String(self.id) + ", id_str: " + self.idStr + " }"
     }
 }

@@ -10,24 +10,25 @@ import Foundation
 import APIKit
 
 public protocol MultipleTweetsResponseType {
-    func tweetsFromObject(AnyObject, NSHTTPURLResponse) -> [Tweet]?
+    func tweetsFromObject(AnyObject, NSHTTPURLResponse) -> [Tweets]?
 }
 
 public protocol SingleTweetResponseType {
-    func tweetFromObject(AnyObject, NSHTTPURLResponse) -> Tweet?
+    func tweetFromObject(AnyObject, NSHTTPURLResponse) -> Tweets?
 }
 
 public extension MultipleTweetsResponseType {
-    public func tweetsFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> [Tweet]? {
+    public func tweetsFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> [Tweets]? {
         guard let array = object as? Array<[String: AnyObject]> else {
             return nil
         }
         
-        var tweets: [Tweet] = []
+        var tweets: [Tweets] = []
         for element in array {
-            guard let tweet = Tweet(dictionary: element) else {
+            guard let tweet = Tweets(dictionary: element) else {
                 return nil
             }
+            
             tweets.append(tweet)
         }
         
@@ -36,10 +37,10 @@ public extension MultipleTweetsResponseType {
 }
 
 public extension SingleTweetResponseType {
-    public func tweetFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> Tweet? {
+    public func tweetFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> Tweets? {
         guard let
             dictionary = object as? [String: AnyObject],
-            tweet = Tweet(dictionary: dictionary) else {
+            tweet = Tweets(dictionary: dictionary) else {
                 
                 return nil
         }
@@ -83,7 +84,7 @@ public extension TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/get/statuses/mentions_timeline
     ///
     public struct MentionsTimeline: StatusesGetRequest, MultipleTweetsResponseType {
-        public typealias Response = [Tweet]
+        public typealias Response = [Tweets]
         
         public let client: OAuthAPIClient
         
@@ -136,7 +137,7 @@ public extension TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/get/statuses/user_timeline
     ///
     public struct UserTimeline: StatusesGetRequest, MultipleTweetsResponseType {
-        public typealias Response = [Tweet]
+        public typealias Response = [Tweets]
         
         public let client: OAuthAPIClient
         
@@ -193,7 +194,7 @@ public extension TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/get/statuses/home_timeline
     ///
     public struct HomeTimeline: StatusesGetRequest, MultipleTweetsResponseType {
-        public typealias Response = [Tweet]
+        public typealias Response = [Tweets]
         
         public let client: OAuthAPIClient
         
@@ -241,6 +242,7 @@ public extension TwitterStatuses {
         }
         
         public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> MentionsTimeline.Response? {
+            print(object)
             return self.tweetsFromObject(object, URLResponse)
         }
     }
@@ -249,7 +251,7 @@ public extension TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/get/statuses/retweets_of_me
     ///
     public struct RetweetsOfMe: StatusesGetRequest, MultipleTweetsResponseType {
-        public typealias Response = [Tweet]
+        public typealias Response = [Tweets]
         
         public let client: OAuthAPIClient
         
@@ -303,7 +305,7 @@ public extension TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/get/statuses/retweets/%3Aid
     ///
     public struct Retweets: StatusesGetRequest, MultipleTweetsResponseType {
-        public typealias Response = [Tweet]
+        public typealias Response = [Tweets]
         
         public let client: OAuthAPIClient
         public let idStr: String
@@ -353,7 +355,7 @@ public extension TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/get/statuses/show/%3Aid
     ///
     public struct Show: StatusesGetRequest, SingleTweetResponseType {
-        public typealias Response = Tweet
+        public typealias Response = Tweets
         
         public let client: OAuthAPIClient
         
@@ -403,7 +405,7 @@ public extension TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/post/statuses/destroy/%3Aid
     ///
     public struct Destroy: StatusesPostRequest, SingleTweetResponseType {
-        public typealias Response = Tweet
+        public typealias Response = Tweets
         
         public let client: OAuthAPIClient
         public let idStr: String
@@ -451,7 +453,7 @@ public extension TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/post/statuses/update
     ///
     public struct Update: StatusesPostRequest, SingleTweetResponseType {
-        public typealias Response = Tweet
+        public typealias Response = Tweets
         
         public let client: OAuthAPIClient
         
@@ -513,7 +515,7 @@ public extension TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/post/statuses/retweet/%3Aid
     ///
     public struct Retweet: StatusesGetRequest, SingleTweetResponseType {
-        public typealias Response = Tweet
+        public typealias Response = Tweets
         
         public let client: OAuthAPIClient
         public let idStr: String
@@ -618,28 +620,6 @@ public extension TwitterStatuses {
 //
 // MARK: - Models
 //
-
-public struct Tweet {
-    
-    
-    
-    public let user: Users
-    
-    public init?(dictionary: [String: AnyObject]){
-        
-        
-        guard let _user = dictionary["user"] as? [String: AnyObject] else {
-            return nil
-        }
-        
-        guard let user = Users(dictionary: _user) else {
-            return nil
-        }
-        
-        
-    }
-}
-
 public struct RetweetIDs {
     public let previousCursor: Int
     public let previousCursorStr: String

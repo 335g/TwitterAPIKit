@@ -66,7 +66,7 @@ class CallViewController: UIViewController {
             TwitterStatuses.sendRequest(request, handler: handle(TwitterStatuses.UserTimeline.self))
             
         case .StatusesHomeTimeLine:
-            let request = TwitterStatuses.HomeTimeline(client, count: 1)
+            let request = TwitterStatuses.HomeTimeline(client, count: 200)
             TwitterStatuses.sendRequest(request, handler: handle(TwitterStatuses.HomeTimeline.self))
             
         case .StatusesRetweetsOfMe:

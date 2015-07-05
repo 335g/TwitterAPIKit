@@ -14,7 +14,97 @@ import Foundation
 // https://dev.twitter.com/overview/api/tweets
 //
 //
-public struct Tweets {
+public enum Tweets {
+    
+    ///
+    /// (Own, Quoted)
+    ///
+    case Original((UserInfo, TweetsInfo), (UserInfo, TweetsInfo)?)
+    
+    ///
+    /// (Own, Retweeted)
+    ///
+    case Retweet((UserInfo, TweetsInfo), (UserInfo, TweetsInfo))
+    
+    public init?(dictionary _dictionary: [String: AnyObject]?){
+        guard let dictionary = _dictionary else {
+            return nil
+        }
+        
+        guard let
+            ownTweet = TweetsInfo(dictionary: dictionary),
+            ownUser = UserInfo(dictionary: dictionary["user"] as? [String: AnyObject]) else {
+                
+                return nil
+        }
+        
+        if let
+            _retweetedInfo = dictionary["retweeted_status"] as? [String: AnyObject],
+            retweetedUser = UserInfo(dictionary: _retweetedInfo["user"] as? [String: AnyObject]),
+            retweetedTweet = TweetsInfo(dictionary: _retweetedInfo) {
+            
+                self = Retweet((ownUser, ownTweet), (retweetedUser, retweetedTweet))
+            
+        }else {
+            if let
+                quotedInfo = dictionary["quoted_status"] as? [String: AnyObject],
+                quotedTweet = TweetsInfo(dictionary: quotedInfo),
+                quotedUser = UserInfo(dictionary: quotedInfo["user"] as? [String: AnyObject]) {
+                    
+                    self = .Original((ownUser, ownTweet), (quotedUser, quotedTweet))
+            }else {
+                self = .Original((ownUser, ownTweet), nil)
+            }
+        }
+    }
+}
+
+extension Tweets: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case let .Original((ownTweetUserInfo, ownTweetInfo), quotedInfo):
+            var str = "\n"
+            str += "  [.Original]\n"
+            str += "{ user: "
+            str += ownTweetUserInfo.description
+            str += " },\n"
+            str += "{ tweet: "
+            str += ownTweetInfo.description
+            str += " }"
+            if let quotedInfo = quotedInfo {
+                switch quotedInfo {
+                case let (quotedUser, quotedTweet):
+                    str += ",\n{ user(quoted): "
+                    str += quotedUser.description
+                    str += ",\n{ tweet(quoted): "
+                    str += quotedTweet.description
+                    str += " }"
+                }
+            }
+            str += "\n"
+            return str
+            
+        case let .Retweet((ownTweetUserInfo, ownTweetInfo), (retweetedUser, retweetedTweet)):
+            var str = "\n"
+            str += "  [.Retweet]\n"
+            str += "{ user: "
+            str += ownTweetUserInfo.description
+            str += " },\n"
+            str += "{ tweet: "
+            str += ownTweetInfo.description
+            str += " },\n"
+            str += "{ user(retweeted): "
+            str += retweetedUser.description
+            str += " },\n"
+            str += "{ tweet(retweeted): "
+            str += retweetedTweet.description
+            str += " }\n"
+            return str
+        }
+    }
+}
+
+public struct TweetsInfo {
     
     public let contributors: [Contributors]?
     public let coordinates: Coordinates?
@@ -36,20 +126,22 @@ public struct Tweets {
     public let possiblySensitive: Bool?
     public let quotedStatusId: Int?
     public let quotedStatusIdStr: String?
-    public let quotedStatus: Tweets?
-    public let scopes: Scopes?
+    //public let quotedStatus: Tweets?
     public let retweetCount: Int
     public let retweeted: Bool
-    public let retweetedStatus: Tweets?
+    //public let retweetedStatus: Box<Tweets?>
+    public let scopes: Scopes?
     public let source: String
     public let text: String
     public let truncated: Bool
-    public let user: Users
     public let withheldCopyright: Bool?
     public let withheldInCountries: [String]?
     public let withheldScope: String?
     
-    public init?(dictionary: [String: AnyObject]){
+    public init?(dictionary _dictionary: [String: AnyObject]?){
+        guard let dictionary = _dictionary else {
+            return nil
+        }
         guard let
             createdAt           = dictionary["created_at"]      as? String,
             favoriteCount       = dictionary["favorite_count"]  as? Int,
@@ -61,14 +153,9 @@ public struct Tweets {
             retweeted           = dictionary["retweeted"]       as? Bool,
             source              = dictionary["source"]          as? String,
             text                = dictionary["text"]            as? String,
-            truncated           = dictionary["truncated"]       as? Bool,
-            _user               = dictionary["user"]            as? [String: AnyObject] else {
+            truncated           = dictionary["truncated"]       as? Bool else {
                 
                 return nil
-        }
-        
-        guard let user = Users(dictionary: _user) else {
-            return nil
         }
         
         if let _contributors = dictionary["contributors"] as? Array<[String: AnyObject]> {
@@ -84,61 +171,40 @@ public struct Tweets {
             self.contributors = nil
         }
         
-        if let _coordinates = dictionary["coordinates"] as? [String: AnyObject] {
-            self.coordinates = Coordinates(dictionary: _coordinates)
-        }else {
-            self.coordinates = nil
-        }
-        
+        self.coordinates = Coordinates(dictionary: dictionary["coordinates"] as? [String: AnyObject])
         self.createdAt = createdAt
-        
-        if let _retweet = dictionary["current_user_retweet"] as? [String: AnyObject] {
-            self.currentUserRetweet = Retweet(dictionary: _retweet)
-        }else {
-            self.currentUserRetweet = nil
-        }
-        
-        if let _entities = dictionary["entities"] as? [String: AnyObject] {
-            self.entities = Entities(dictionary: _entities)
-        }else {
-            self.entities = nil
-        }
-        
+        self.currentUserRetweet = Retweet(dictionary: dictionary["current_user_retweet"] as? [String: AnyObject])
+        self.entities = Entities(dictionary: dictionary["entities"] as? [String: AnyObject])
         self.favoriteCount = favoriteCount
         self.favorited = favorited
         self.geo = dictionary["geo"] as? String
         self.id = id
         self.idStr = idStr
         self.inReplyToScreenName = dictionary["in_reply_to_screen_name"] as? String
-        
-        if let _inReplyToStatusId = dictionary["in_reply_to_status_id"] as? String {
-            inReplyToStatusId = Int(_inReplyToStatusId)
-        }else {
-            inReplyToStatusId = nil
-        }
+        self.inReplyToStatusId = dictionary["in_reply_to_status_id"] as? Int
         self.inReplyToStatusIdStr = dictionary["in_reply_to_status_id_str"] as? String
-        
-        if let _inReplyToUserId = dictionary["in_reply_to_user_id"] as? String {
-            inReplyToUserId = Int(_inReplyToUserId)
-        }else {
-            inReplyToUserId = nil
-        }
+        self.inReplyToUserId = dictionary["in_reply_to_user_id"] as? Int
         self.inReplyToUserIdStr = dictionary["in_reply_to_user_id_str"] as? String
-        
         self.lang = lang
-        
-        if let _place = dictionary["place"] as? [String: AnyObject] {
-            self.place = Places(dictionary: _place)
-        }else {
-            self.place = nil
-        }
-        
+        self.place = Places(dictionary: dictionary["place"] as? [String: AnyObject])
+        self.possiblySensitive = dictionary["possibly_sensitive"] as? Bool
+        self.quotedStatusId = dictionary["quoted_status_id"] as? Int
+        self.quotedStatusIdStr = dictionary["quoted_status_id_str"] as? String
         self.retweetCount = retweetCount
         self.retweeted = retweeted
+        self.scopes = Scopes(dictionary: dictionary["scopes"] as? [String: AnyObject])
         self.source = source
         self.text = text
         self.truncated = truncated
-        self.user = user
+        self.withheldCopyright = dictionary["withheld_copyright"] as? Bool
+        self.withheldInCountries = dictionary["withheld_in_countries"] as? [String]
+        self.withheldScope = dictionary["withheld_scope"] as? String
+    }
+}
+
+extension TweetsInfo: CustomStringConvertible {
+    public var description: String {
+        return "TweetsInfo: { id: " + String(self.id) + ", id_str: " + self.idStr + "}"
     }
 }
 
@@ -149,7 +215,10 @@ public struct Contributors {
     let idStr: String
     let screenName: String
     
-    public init?(dictionary: [String: AnyObject]){
+    public init?(dictionary _dictionary: [String: AnyObject]?){
+        guard let dictionary = _dictionary else {
+            return nil
+        }
         guard let
             id = dictionary["id"] as? Int,
             idStr = dictionary["id_str"] as? String,
@@ -168,7 +237,11 @@ public struct Coordinates {
     let coordinates: [Float]
     let type: String
     
-    public init?(dictionary: [String: AnyObject]){
+    public init?(dictionary _dictionary: [String: AnyObject]?){
+        
+        guard let dictionary = _dictionary else {
+            return nil
+        }
         guard let
             coordinates = dictionary["coordinates"] as? [Float],
             type = dictionary["type"] as? String else {
@@ -185,7 +258,10 @@ public struct Retweet {
     let id :Int
     let idStr: String
     
-    public init?(dictionary: [String: AnyObject]){
+    public init?(dictionary _dictionary: [String: AnyObject]?){
+        guard let dictionary = _dictionary else {
+            return nil
+        }
         guard let
             id = dictionary["id"] as? Int,
             idStr = dictionary["id_str"] as? String else {
@@ -201,7 +277,11 @@ public struct Retweet {
 public struct Scopes {
     let follwers: Bool?
     
-    public init?(dictionary: [String: AnyObject]){
+    public init?(dictionary _dictionary: [String: AnyObject]?){
+        guard let dictionary = _dictionary else {
+            return nil
+        }
+        
         self.follwers = dictionary["followers"] as? Bool
     }
 }
