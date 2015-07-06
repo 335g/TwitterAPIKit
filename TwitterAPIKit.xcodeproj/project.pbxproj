@@ -408,7 +408,7 @@
 				848A18431AE3B99D00CE4E6E /* FoundationExtension.swift */,
 				8474996D1B4779EB008C3A6E /* Utils.swift */,
 				847499831B48C8D7008C3A6E /* User.swift */,
-				8474997F1B48C87A008C3A6E /* Object */,
+				8474997F1B48C87A008C3A6E /* Models */,
 				847499501B4569F1008C3A6E /* APIs */,
 				8474995B1B457850008C3A6E /* 0. */,
 				845CB4A51AD2A4C7006B3CE8 /* Supporting Files */,
@@ -457,11 +457,11 @@
 		847499501B4569F1008C3A6E /* APIs */ = {
 			isa = PBXGroup;
 			children = (
-				847499551B4577CB008C3A6E /* OAuth.swift */,
-				847499731B47B387008C3A6E /* Statuses.swift */,
 				847499761B482E50008C3A6E /* DirectMessages.swift */,
 				847499791B484370008C3A6E /* Followers.swift */,
 				8474997C1B48B9FC008C3A6E /* Friends.swift */,
+				847499551B4577CB008C3A6E /* OAuth.swift */,
+				847499731B47B387008C3A6E /* Statuses.swift */,
 			);
 			name = APIs;
 			sourceTree = "<group>";
@@ -487,7 +487,7 @@
 			name = 0.;
 			sourceTree = "<group>";
 		};
-		8474997F1B48C87A008C3A6E /* Object */ = {
+		8474997F1B48C87A008C3A6E /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				847499801B48C898008C3A6E /* Tweets.swift */,
@@ -495,7 +495,7 @@
 				847499861B48C8FD008C3A6E /* Entities.swift */,
 				847499891B48CFE6008C3A6E /* Places.swift */,
 			);
-			name = Object;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		84A330101B1018B7000E65B8 /* Frameworks */ = {
