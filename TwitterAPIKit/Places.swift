@@ -10,15 +10,15 @@ import Foundation
 
 public struct Places {
     
-    let attributes: [String: AnyObject]
-    let boundingBox: BoundingBox
-    let country: String
-    let countryCode: String
-    let fullName: String
-    let id: String
-    let name: String
-    let placeType: String
-    let url: String
+    public let attributes: [String: AnyObject]
+    public let boundingBox: BoundingBox
+    public let country: String
+    public let countryCode: String
+    public let fullName: String
+    public let id: String
+    public let name: String
+    public let placeType: String
+    public let url: String
     
     public init?(dictionary _dictionary: [String: AnyObject]?){
         guard let dictionary = _dictionary else {
@@ -52,8 +52,8 @@ public struct Places {
 }
 
 public struct BoundingBox {
-    let coordinates: [[[Float]]]
-    let type: String
+    public let coordinates: [[[Float]]]
+    public let type: String
     
     public init?(dictionary _dictionary: [String: AnyObject]?){
         guard let dictionary = _dictionary else {

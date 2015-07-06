@@ -10,10 +10,10 @@ import Foundation
 
 public struct Entities {
     
-    let hashTags: [Hashtag]
-    let media: [Media]
-    let urls: [URL]
-    let userMensions: [UserMension]
+    public let hashTags: [Hashtag]
+    public let media: [Media]
+    public let urls: [URL]
+    public let userMensions: [UserMension]
     
     public init?(dictionary _dictionary: [String: AnyObject]?){
         guard let dictionary = _dictionary else {
@@ -69,8 +69,8 @@ public struct Entities {
 }
 
 public struct Hashtag {
-    let indices: [Int]
-    let text: String
+    public let indices: [Int]
+    public let text: String
     
     public init?(dictionary _dictionary: [String: AnyObject]?){
         guard let dictionary = _dictionary else {
@@ -90,17 +90,17 @@ public struct Hashtag {
 }
 
 public struct Media {
-    let displayUrl: String
-    let expandedUrl: String
-    let idStr: String
-    let indicies: [Int]
-    let mediaUrl: String
-    let mediaUrlHttps: String
-    let sizes: Sizes
-    let sourceStatusId: Int
-    let sourceStatusIdStr: String
-    let type: String
-    let url: String
+    public let displayUrl: String
+    public let expandedUrl: String
+    public let idStr: String
+    public let indicies: [Int]
+    public let mediaUrl: String
+    public let mediaUrlHttps: String
+    public let sizes: Sizes
+    public let sourceStatusId: Int
+    public let sourceStatusIdStr: String
+    public let type: String
+    public let url: String
     
     public init?(dictionary _dictionary: [String: AnyObject]?){
         guard let dictionary = _dictionary else {
@@ -138,10 +138,10 @@ public struct Media {
 }
 
 public struct Sizes {
-    let thumb: Size
-    let large: Size
-    let medium: Size
-    let small: Size
+    public let thumb: Size
+    public let large: Size
+    public let medium: Size
+    public let small: Size
     
     public init?(dictionary _dictionary: [String: AnyObject]?){
         guard let dictionary = _dictionary else {
@@ -165,9 +165,9 @@ public struct Sizes {
 }
 
 public struct Size {
-    let h: Int
-    let resize: String
-    let w: Int
+    public let h: Int
+    public let resize: String
+    public let w: Int
     
     public init?(dictionary _dictionary: [String: AnyObject]?){
         guard let dictionary = _dictionary else {
@@ -189,10 +189,10 @@ public struct Size {
 }
 
 public struct URL {
-    let displayUrl: String
-    let expandedUrl: String
-    let indicies: [Int]
-    let url: String
+    public let displayUrl: String
+    public let expandedUrl: String
+    public let indicies: [Int]
+    public let url: String
     
     public init?(dictionary _dictionary: [String: AnyObject]?){
         guard let dictionary = _dictionary else {
@@ -216,11 +216,11 @@ public struct URL {
 }
 
 public struct UserMension {
-    let id: Int
-    let idStr: String
-    let indicies: [Int]
-    let name: String
-    let screenName: String
+    public let id: Int
+    public let idStr: String
+    public let indicies: [Int]
+    public let name: String
+    public let screenName: String
     
     public init?(dictionary _dictionary: [String: AnyObject]?){
         guard let dictionary = _dictionary else {

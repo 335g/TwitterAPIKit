@@ -57,6 +57,22 @@
 		84782F861AE533C2005CDC2B /* CallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84782F851AE533C2005CDC2B /* CallViewController.swift */; };
 		84782F8F1AE54341005CDC2B /* APIsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84782F8E1AE54341005CDC2B /* APIsViewController.swift */; };
 		848A18481AE3B99D00CE4E6E /* FoundationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A18431AE3B99D00CE4E6E /* FoundationExtension.swift */; };
+		84949AEC1B4A9ECD002DE195 /* Friendships.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949AEB1B4A9ECD002DE195 /* Friendships.swift */; };
+		84949AED1B4A9ECD002DE195 /* Friendships.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949AEB1B4A9ECD002DE195 /* Friendships.swift */; };
+		84949AF01B4AA31C002DE195 /* ResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949AEF1B4AA31C002DE195 /* ResponseType.swift */; };
+		84949AF11B4AA31C002DE195 /* ResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949AEF1B4AA31C002DE195 /* ResponseType.swift */; };
+		84949AF31B4AA42B002DE195 /* RetweetIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949AF21B4AA42B002DE195 /* RetweetIDs.swift */; };
+		84949AF41B4AA42B002DE195 /* RetweetIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949AF21B4AA42B002DE195 /* RetweetIDs.swift */; };
+		84949AF61B4AA48C002DE195 /* UserIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949AF51B4AA48C002DE195 /* UserIDs.swift */; };
+		84949AF71B4AA48C002DE195 /* UserIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949AF51B4AA48C002DE195 /* UserIDs.swift */; };
+		84949AF91B4AA4A1002DE195 /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949AF81B4AA4A1002DE195 /* UsersList.swift */; };
+		84949AFA1B4AA4A1002DE195 /* UsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949AF81B4AA4A1002DE195 /* UsersList.swift */; };
+		84949AFC1B4AA4F1002DE195 /* DirectMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949AFB1B4AA4F1002DE195 /* DirectMessage.swift */; };
+		84949AFD1B4AA4F1002DE195 /* DirectMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949AFB1B4AA4F1002DE195 /* DirectMessage.swift */; };
+		84949AFF1B4AA7E8002DE195 /* Lists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949AFE1B4AA7E8002DE195 /* Lists.swift */; };
+		84949B001B4AA7E8002DE195 /* Lists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949AFE1B4AA7E8002DE195 /* Lists.swift */; };
+		84949B021B4AA998002DE195 /* ListsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949B011B4AA998002DE195 /* ListsList.swift */; };
+		84949B031B4AA998002DE195 /* ListsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949B011B4AA998002DE195 /* ListsList.swift */; };
 		84D490971B353C3300390744 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C661B305AD1001CCFEE /* APIKit.framework */; };
 		84D490991B353C3300390744 /* HMAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C691B305AD1001CCFEE /* HMAC.framework */; };
 		84D4909A1B353C3300390744 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C6A1B305AD1001CCFEE /* Result.framework */; };
@@ -187,6 +203,14 @@
 		84782F851AE533C2005CDC2B /* CallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
 		84782F8E1AE54341005CDC2B /* APIsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIsViewController.swift; sourceTree = "<group>"; };
 		848A18431AE3B99D00CE4E6E /* FoundationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtension.swift; sourceTree = "<group>"; };
+		84949AEB1B4A9ECD002DE195 /* Friendships.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friendships.swift; sourceTree = "<group>"; };
+		84949AEF1B4AA31C002DE195 /* ResponseType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseType.swift; sourceTree = "<group>"; };
+		84949AF21B4AA42B002DE195 /* RetweetIDs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetweetIDs.swift; sourceTree = "<group>"; };
+		84949AF51B4AA48C002DE195 /* UserIDs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserIDs.swift; sourceTree = "<group>"; };
+		84949AF81B4AA4A1002DE195 /* UsersList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersList.swift; sourceTree = "<group>"; };
+		84949AFB1B4AA4F1002DE195 /* DirectMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectMessage.swift; sourceTree = "<group>"; };
+		84949AFE1B4AA7E8002DE195 /* Lists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lists.swift; sourceTree = "<group>"; };
+		84949B011B4AA998002DE195 /* ListsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsList.swift; sourceTree = "<group>"; };
 		84E082B61AE52D5B00A32EEC /* AppInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppInfo.plist; sourceTree = "<group>"; };
 		84E082B81AE52DE200A32EEC /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -408,6 +432,7 @@
 				848A18431AE3B99D00CE4E6E /* FoundationExtension.swift */,
 				8474996D1B4779EB008C3A6E /* Utils.swift */,
 				847499831B48C8D7008C3A6E /* User.swift */,
+				84949AEE1B4AA2CB002DE195 /* ResponseType */,
 				8474997F1B48C87A008C3A6E /* Models */,
 				847499501B4569F1008C3A6E /* APIs */,
 				8474995B1B457850008C3A6E /* 0. */,
@@ -460,6 +485,8 @@
 				847499761B482E50008C3A6E /* DirectMessages.swift */,
 				847499791B484370008C3A6E /* Followers.swift */,
 				8474997C1B48B9FC008C3A6E /* Friends.swift */,
+				84949AEB1B4A9ECD002DE195 /* Friendships.swift */,
+				84949AFE1B4AA7E8002DE195 /* Lists.swift */,
 				847499551B4577CB008C3A6E /* OAuth.swift */,
 				847499731B47B387008C3A6E /* Statuses.swift */,
 			);
@@ -494,8 +521,21 @@
 				8474996A1B477942008C3A6E /* Users.swift */,
 				847499861B48C8FD008C3A6E /* Entities.swift */,
 				847499891B48CFE6008C3A6E /* Places.swift */,
+				84949AF21B4AA42B002DE195 /* RetweetIDs.swift */,
+				84949AF51B4AA48C002DE195 /* UserIDs.swift */,
+				84949AF81B4AA4A1002DE195 /* UsersList.swift */,
+				84949AFB1B4AA4F1002DE195 /* DirectMessage.swift */,
+				84949B011B4AA998002DE195 /* ListsList.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		84949AEE1B4AA2CB002DE195 /* ResponseType */ = {
+			isa = PBXGroup;
+			children = (
+				84949AEF1B4AA31C002DE195 /* ResponseType.swift */,
+			);
+			name = ResponseType;
 			sourceTree = "<group>";
 		};
 		84A330101B1018B7000E65B8 /* Frameworks */ = {
@@ -725,18 +765,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				8474996E1B4779EB008C3A6E /* Utils.swift in Sources */,
+				84949AFF1B4AA7E8002DE195 /* Lists.swift in Sources */,
 				847499741B47B387008C3A6E /* Statuses.swift in Sources */,
 				847499771B482E50008C3A6E /* DirectMessages.swift in Sources */,
 				847499811B48C898008C3A6E /* Tweets.swift in Sources */,
 				8474998A1B48CFE6008C3A6E /* Places.swift in Sources */,
 				8474996B1B477942008C3A6E /* Users.swift in Sources */,
+				84949B021B4AA998002DE195 /* ListsList.swift in Sources */,
 				8474997D1B48B9FC008C3A6E /* Friends.swift in Sources */,
+				84949AFC1B4AA4F1002DE195 /* DirectMessage.swift in Sources */,
 				847499871B48C8FD008C3A6E /* Entities.swift in Sources */,
 				847499561B4577CB008C3A6E /* OAuth.swift in Sources */,
+				84949AF61B4AA48C002DE195 /* UserIDs.swift in Sources */,
+				84949AF91B4AA4A1002DE195 /* UsersList.swift in Sources */,
 				848A18481AE3B99D00CE4E6E /* FoundationExtension.swift in Sources */,
 				847499521B456A17008C3A6E /* OAuthClient.swift in Sources */,
+				84949AF31B4AA42B002DE195 /* RetweetIDs.swift in Sources */,
+				84949AEC1B4A9ECD002DE195 /* Friendships.swift in Sources */,
 				8474997A1B484370008C3A6E /* Followers.swift in Sources */,
 				847499841B48C8D7008C3A6E /* User.swift in Sources */,
+				84949AF01B4AA31C002DE195 /* ResponseType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,18 +801,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				8474996F1B4779EB008C3A6E /* Utils.swift in Sources */,
+				84949B001B4AA7E8002DE195 /* Lists.swift in Sources */,
 				847499751B47B387008C3A6E /* Statuses.swift in Sources */,
 				847499781B482E50008C3A6E /* DirectMessages.swift in Sources */,
 				847499821B48C898008C3A6E /* Tweets.swift in Sources */,
 				8474998B1B48CFE6008C3A6E /* Places.swift in Sources */,
 				8474996C1B477942008C3A6E /* Users.swift in Sources */,
+				84949B031B4AA998002DE195 /* ListsList.swift in Sources */,
 				8474997E1B48B9FC008C3A6E /* Friends.swift in Sources */,
+				84949AFD1B4AA4F1002DE195 /* DirectMessage.swift in Sources */,
 				847499881B48C8FD008C3A6E /* Entities.swift in Sources */,
 				847499571B4577CB008C3A6E /* OAuth.swift in Sources */,
+				84949AF71B4AA48C002DE195 /* UserIDs.swift in Sources */,
+				84949AFA1B4AA4A1002DE195 /* UsersList.swift in Sources */,
 				847499541B457620008C3A6E /* FoundationExtension.swift in Sources */,
 				847499531B456A17008C3A6E /* OAuthClient.swift in Sources */,
+				84949AF41B4AA42B002DE195 /* RetweetIDs.swift in Sources */,
+				84949AED1B4A9ECD002DE195 /* Friendships.swift in Sources */,
 				8474997B1B484370008C3A6E /* Followers.swift in Sources */,
 				847499851B48C8D7008C3A6E /* User.swift in Sources */,
+				84949AF11B4AA31C002DE195 /* ResponseType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

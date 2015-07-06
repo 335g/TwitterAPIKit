@@ -9,46 +9,6 @@
 import Foundation
 import APIKit
 
-public protocol MultipleTweetsResponseType {
-    func tweetsFromObject(AnyObject, NSHTTPURLResponse) -> [Tweets]?
-}
-
-public protocol SingleTweetResponseType {
-    func tweetFromObject(AnyObject, NSHTTPURLResponse) -> Tweets?
-}
-
-public extension MultipleTweetsResponseType {
-    public func tweetsFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> [Tweets]? {
-        guard let array = object as? Array<[String: AnyObject]> else {
-            return nil
-        }
-        
-        var tweets: [Tweets] = []
-        for element in array {
-            guard let tweet = Tweets(dictionary: element) else {
-                return nil
-            }
-            
-            tweets.append(tweet)
-        }
-        
-        return tweets
-    }
-}
-
-public extension SingleTweetResponseType {
-    public func tweetFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> Tweets? {
-        guard let
-            dictionary = object as? [String: AnyObject],
-            tweet = Tweets(dictionary: dictionary) else {
-                
-                return nil
-        }
-        
-        return tweet
-    }
-}
-
 public protocol StatusesGetRequest: Request {}
 public protocol StatusesPostRequest: Request {}
 
@@ -242,7 +202,6 @@ public extension TwitterStatuses {
         }
         
         public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> MentionsTimeline.Response? {
-            print(object)
             return self.tweetsFromObject(object, URLResponse)
         }
     }
@@ -614,35 +573,4 @@ public extension TwitterStatuses {
         }
     }
     
-}
-
-
-//
-// MARK: - Models
-//
-public struct RetweetIDs {
-    public let previousCursor: Int
-    public let previousCursorStr: String
-    public let nextCursor: Int
-    public let nextCursorStr: String
-    public let ids: [Int]?
-    public let idStrs: [String]?
-    
-    public init?(dictionary: [String: AnyObject]) {
-        guard let
-            previousCursor = dictionary["previous_cursor"] as? Int,
-            previousCursorStr = dictionary["previous_cursor_str"] as? String,
-            nextCursor = dictionary["next_cursor"] as? Int,
-            nextCursorStr = dictionary["next_cursor_str"] as? String else{
-                
-                return nil
-        }
-        
-        self.previousCursor = previousCursor
-        self.previousCursorStr = previousCursorStr
-        self.nextCursor = nextCursor
-        self.nextCursorStr = nextCursorStr
-        self.ids = dictionary["ids"] as? [Int]
-        self.idStrs = dictionary["ids"] as? [String]
-    }
 }

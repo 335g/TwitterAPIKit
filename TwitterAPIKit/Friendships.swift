@@ -1,8 +1,8 @@
 //
-//  Friends.swift
+//  Friendships.swift
 //  TwitterAPIKit
 //
-//  Created by Yoshiki Kudo on 2015/07/05.
+//  Created by Yoshiki Kudo on 2015/07/06.
 //  Copyright © 2015年 Yoshiki Kudo. All rights reserved.
 //
 
@@ -11,11 +11,12 @@ import APIKit
 
 // MARK: - Request
 
-public protocol FriendsGetRequest: Request {}
+public protocol FriendshipsGetRequest {}
+public protocol FriendshipsPostRequest {}
 
-public extension FriendsGetRequest {
+public extension FriendshipsGetRequest {
     public var baseURL: NSURL {
-        return NSURL(string: "https://api.twitter.com/1.1/friends")!
+        return NSURL(string: "https://api.twitter.com/1.1/friendships")!
     }
     public var requestBodyBuilder: RequestBodyBuilder {
         return .JSON(writingOptions: .PrettyPrinted)
@@ -25,26 +26,38 @@ public extension FriendsGetRequest {
     }
 }
 
+public extension FriendshipsPostRequest {
+    public var baseURL: NSURL {
+        return NSURL(string: "https://api.twitter.com/1.1/friendships")!
+    }
+    public var requestBodyBuilder: RequestBodyBuilder {
+        return .URL(encoding: NSUTF8StringEncoding)
+    }
+    public var responseBodyParser: ResponseBodyParser {
+        return .JSON(readingOptions: .AllowFragments)
+    }
+}
+
 // MARK: - API
 
-public class TwitterFriends: API {}
+public class TwitterFriendships: API {}
 
-public extension TwitterFriends {
+public extension TwitterFriendships {
     
     ///
-    /// https://dev.twitter.com/rest/reference/get/friends/ids
+    /// https://dev.twitter.com/rest/reference/post/friendships/create
     ///
-    public struct Ids: FriendsGetRequest {
-        public typealias Response = UserIDs
+    public struct Create: FriendshipsPostRequest, SingleUserResponseType {
+        public typealias Response = Users
         
         public let client: OAuthAPIClient
         
         public var method: APIKit.HTTPMethod {
-            return .GET
+            return .POST
         }
         
         public var path: String {
-            return "/ids.json"
+            return "/create.json"
         }
         
         private let _parameters: [String: AnyObject?]
@@ -63,45 +76,34 @@ public extension TwitterFriends {
         public init(
             _ client: OAuthAPIClient,
             user: User,
-            count: Int = 5000,
-            cursorStr: String = "-1",
-            stringifyIds: Bool = true){
+            follow: Bool = false){
                 
                 self.client = client
                 self._parameters = [
                     user.key: user.obj,
-                    "cursor": cursorStr,
-                    "stringify_ids": stringifyIds,
-                    "count": count
+                    "follow": follow
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Ids.Response? {
-            guard let
-                dictionary = object as? [String: AnyObject],
-                ids = UserIDs(dictionary: dictionary) else {
-                    
-                    return nil
-            }
-            
-            return ids
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Create.Response? {
+            return self.userFromObject(object, URLResponse)
         }
     }
     
     ///
-    /// https://dev.twitter.com/rest/reference/get/friends/list
+    /// https://dev.twitter.com/rest/reference/post/friendships/destroy
     ///
-    public struct List: FollowersGetRequest {
-        public typealias Response = UsersList
+    public struct Destroy: FriendshipsPostRequest, SingleUserResponseType {
+        public typealias Response = Users
         
         public let client: OAuthAPIClient
         
         public var method: APIKit.HTTPMethod {
-            return .GET
+            return .POST
         }
         
         public var path: String {
-            return "/list.json"
+            return "/destroy.json"
         }
         
         private let _parameters: [String: AnyObject?]
@@ -119,31 +121,14 @@ public extension TwitterFriends {
         
         public init(
             _ client: OAuthAPIClient,
-            user: User,
-            count: Int = 50,
-            cursorStr: String = "-1",
-            skipStatus: Bool = true,
-            includeUserEntities: Bool = false){
+            user: User){
                 
                 self.client = client
-                self._parameters = [
-                    user.key: user.obj,
-                    "cursor": cursorStr,
-                    "count": count,
-                    "skip_status": skipStatus,
-                    "include_user_entities": includeUserEntities
-                ]
+                self._parameters = [user.key: user.obj]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> List.Response? {
-            guard let
-                dictionary = object as? [String: AnyObject],
-                list = UsersList(dictionary: dictionary) else {
-                    
-                    return nil
-            }
-            
-            return list
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Destroy.Response? {
+            return self.userFromObject(object, URLResponse)
         }
     }
 }

@@ -9,6 +9,8 @@
 import Foundation
 import APIKit
 
+// MARK: - Request
+
 public protocol FollowersGetRequest: Request {}
 
 public extension FollowersGetRequest {
@@ -22,6 +24,8 @@ public extension FollowersGetRequest {
         return .JSON(readingOptions: .AllowFragments)
     }
 }
+
+// MARK: - API
 
 public class TwitterFollowers: API {}
 
@@ -141,69 +145,5 @@ public extension TwitterFollowers {
             
             return list
         }
-    }
-}
-
-// MARK: - Models
-
-public struct UserIDs {
-    let ids: [Int]?
-    let idStrs: [String]?
-    let nextCursor: Int
-    let nextCursorStr: String
-    let previousCursor: Int
-    let previousCursorStr: String
-    
-    public init?(dictionary: [String: AnyObject]){
-        guard let
-            nextCursor = dictionary["next_cursor"] as? Int,
-            nextCursorStr = dictionary["next_cursor_str"] as? String,
-            previousCursor = dictionary["previous_cursor"] as? Int,
-            previousCursorStr = dictionary["previous_cursor_str"] as? String else {
-                
-                return nil
-        }
-        
-        self.ids = dictionary["ids"] as? [Int]
-        self.idStrs = dictionary["ids"] as? [String]
-        self.nextCursor = nextCursor
-        self.nextCursorStr = nextCursorStr
-        self.previousCursor = previousCursor
-        self.previousCursorStr = previousCursorStr
-    }
-}
-
-public struct UsersList {
-    let users: [Users]
-    let nextCursor: Int
-    let nextCursorStr: String
-    let previousCursor: Int
-    let previousCursorStr: String
-    
-    public init?(dictionary: [String: AnyObject]){
-        guard let
-            _users = dictionary["users"] as? Array<[String: AnyObject]>,
-            nextCursor = dictionary["next_cursor"] as? Int,
-            nextCursorStr = dictionary["next_cursor_str"] as? String,
-            previousCursor = dictionary["previous_cursor"] as? Int,
-            previousCursorStr = dictionary["previous_cursor_str"] as? String else {
-                
-                return nil
-        }
-        
-        var users: [Users] = []
-        for _user in _users {
-            guard let user = Users(dictionary: _user) else {
-                return nil
-            }
-            
-            users.append(user)
-        }
-        
-        self.users = users
-        self.nextCursor = nextCursor
-        self.nextCursorStr = nextCursorStr
-        self.previousCursor = previousCursor
-        self.previousCursorStr = previousCursorStr
     }
 }
