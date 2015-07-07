@@ -75,6 +75,10 @@
 		84949B031B4AA998002DE195 /* ListsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949B011B4AA998002DE195 /* ListsList.swift */; };
 		84949B051B4BDC26002DE195 /* Mutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949B041B4BDC26002DE195 /* Mutes.swift */; };
 		84949B061B4BDC26002DE195 /* Mutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949B041B4BDC26002DE195 /* Mutes.swift */; };
+		84949B081B4BE04D002DE195 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949B071B4BE04D002DE195 /* Search.swift */; };
+		84949B091B4BE04D002DE195 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949B071B4BE04D002DE195 /* Search.swift */; };
+		84949B0B1B4BE199002DE195 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949B0A1B4BE199002DE195 /* SearchResult.swift */; };
+		84949B0C1B4BE199002DE195 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949B0A1B4BE199002DE195 /* SearchResult.swift */; };
 		84D490971B353C3300390744 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C661B305AD1001CCFEE /* APIKit.framework */; };
 		84D490991B353C3300390744 /* HMAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C691B305AD1001CCFEE /* HMAC.framework */; };
 		84D4909A1B353C3300390744 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C6A1B305AD1001CCFEE /* Result.framework */; };
@@ -214,6 +218,8 @@
 		84949AFE1B4AA7E8002DE195 /* Lists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lists.swift; sourceTree = "<group>"; };
 		84949B011B4AA998002DE195 /* ListsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListsList.swift; sourceTree = "<group>"; };
 		84949B041B4BDC26002DE195 /* Mutes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mutes.swift; sourceTree = "<group>"; };
+		84949B071B4BE04D002DE195 /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		84949B0A1B4BE199002DE195 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		84E082B61AE52D5B00A32EEC /* AppInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppInfo.plist; sourceTree = "<group>"; };
 		84E082B81AE52DE200A32EEC /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -491,6 +497,7 @@
 				84949AEB1B4A9ECD002DE195 /* Friendships.swift */,
 				84949AFE1B4AA7E8002DE195 /* Lists.swift */,
 				84949B041B4BDC26002DE195 /* Mutes.swift */,
+				84949B071B4BE04D002DE195 /* Search.swift */,
 				847499551B4577CB008C3A6E /* OAuth.swift */,
 				847499731B47B387008C3A6E /* Statuses.swift */,
 			);
@@ -530,6 +537,7 @@
 				84949AF81B4AA4A1002DE195 /* UsersList.swift */,
 				84949AFB1B4AA4F1002DE195 /* DirectMessage.swift */,
 				84949B011B4AA998002DE195 /* ListsList.swift */,
+				84949B0A1B4BE199002DE195 /* SearchResult.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -778,11 +786,13 @@
 				84949B021B4AA998002DE195 /* ListsList.swift in Sources */,
 				8474997D1B48B9FC008C3A6E /* Friends.swift in Sources */,
 				84949AFC1B4AA4F1002DE195 /* DirectMessage.swift in Sources */,
+				84949B0B1B4BE199002DE195 /* SearchResult.swift in Sources */,
 				847499871B48C8FD008C3A6E /* Entities.swift in Sources */,
 				847499561B4577CB008C3A6E /* OAuth.swift in Sources */,
 				84949B051B4BDC26002DE195 /* Mutes.swift in Sources */,
 				84949AF61B4AA48C002DE195 /* UserIDs.swift in Sources */,
 				84949AF91B4AA4A1002DE195 /* UsersList.swift in Sources */,
+				84949B081B4BE04D002DE195 /* Search.swift in Sources */,
 				848A18481AE3B99D00CE4E6E /* FoundationExtension.swift in Sources */,
 				847499521B456A17008C3A6E /* OAuthClient.swift in Sources */,
 				84949AF31B4AA42B002DE195 /* RetweetIDs.swift in Sources */,
@@ -815,11 +825,13 @@
 				84949B031B4AA998002DE195 /* ListsList.swift in Sources */,
 				8474997E1B48B9FC008C3A6E /* Friends.swift in Sources */,
 				84949AFD1B4AA4F1002DE195 /* DirectMessage.swift in Sources */,
+				84949B0C1B4BE199002DE195 /* SearchResult.swift in Sources */,
 				847499881B48C8FD008C3A6E /* Entities.swift in Sources */,
 				847499571B4577CB008C3A6E /* OAuth.swift in Sources */,
 				84949B061B4BDC26002DE195 /* Mutes.swift in Sources */,
 				84949AF71B4AA48C002DE195 /* UserIDs.swift in Sources */,
 				84949AFA1B4AA4A1002DE195 /* UsersList.swift in Sources */,
+				84949B091B4BE04D002DE195 /* Search.swift in Sources */,
 				847499541B457620008C3A6E /* FoundationExtension.swift in Sources */,
 				847499531B456A17008C3A6E /* OAuthClient.swift in Sources */,
 				84949AF41B4AA42B002DE195 /* RetweetIDs.swift in Sources */,
