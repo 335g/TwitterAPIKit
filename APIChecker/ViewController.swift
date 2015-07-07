@@ -33,8 +33,8 @@ class ViewController: UIViewController {
         let client = OAuthRequestTokenClient(consumerKey: consumerKey, consumerSecret: consumerSecret)
         let requestTokenRequet = TwitterOAuth.RequestToken(client: client, callback: callback)
         
-        TwitterOAuth.sendRequest(requestTokenRequet){ response in
-            switch response {
+        TwitterOAuth.sendRequest(requestTokenRequet){ result in
+            switch result {
             case .Success(let response):
                 self.observer = NSNotificationCenter
                     .defaultCenter()

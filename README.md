@@ -29,9 +29,9 @@ let callback = "callback://"
 
 let client = OAuthRequestTokenClient(consumerKey: consumerKey, consumerSecret: consumerSecret) // (1)
 let requestTokenRequet = TwitterOAuth.RequestToken(client: client, callback: callback) // (2)
-TwitterOAuth.sendRequest(request){ response in
-    switch response {
-    case .Success(let info):
+TwitterOAuth.sendRequest(request){ result in
+    switch result {
+    case .Success(let response):
 
          ...
 
@@ -45,7 +45,7 @@ TwitterOAuth.sendRequest(request){ response in
 - `OAuthAPIClient` is a client to access some api.
 
 (2) is a process to make `Request`. Please see [APIKit Document](https://github.com/ishkawa/APIKit) if you want to know detail.  
-(3) is a process to access endpoint `oauth/request_token`. Trailing Closure is a response handling. `response` is a `Result<T, E>`. Please see [APIKit Document](https://github.com/ishkawa/APIKIT) too this.  
+(3) is a process to access endpoint `oauth/request_token`. Trailing Closure is a response handling. `result` is a `Result<T, E>`. Please see [APIKit Document](https://github.com/ishkawa/APIKIT) too this.  
 
 Next, You have to open URL `https://api.twitter.com/oauth/authorize`.
 
