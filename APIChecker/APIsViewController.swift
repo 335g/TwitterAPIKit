@@ -22,35 +22,35 @@ class APIsViewController: UITableViewController {
             API.StatusesRetweetsOfMe,
             API.StatusesUpdate,
             API.StatusesRetweet
+        ],
+        
+        [
+            API.FriendsIds,
+            API.FriendsList
+        ],
+        
+        [
+            API.FollowersIds,
+            API.FollowersList
+        ],
+        
+        [
+            API.UsersLookup,
+            API.UsersShow
+        ],
+        
+        [
+            API.ListsMemberships
+        ],
+        
+        [
+            API.FriendshipsCreate,
+            API.FriendshipsDestroy
+        ],
+        
+        [
+            API.DirectMessagesNew
         ]
-//        
-//        [
-//            API.FriendsIds,
-//            API.FriendsList
-//        ],
-//        
-//        [
-//            API.FollowersIds,
-//            API.FollowersList
-//        ],
-//        
-//        [
-//            API.UsersLookup,
-//            API.UsersShow
-//        ],
-//        
-//        [
-//            API.ListsMemberships
-//        ],
-//        
-//        [
-//            API.FriendshipsCreate,
-//            API.FriendshipsDestroy
-//        ],
-//        
-//        [
-//            API.DirectMessagesNew
-//        ]
     ]
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

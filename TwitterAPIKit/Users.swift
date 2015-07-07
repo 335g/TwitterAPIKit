@@ -15,7 +15,7 @@ import Foundation
 //
 //
 public enum Users {
-    case WithStatus(UserInfo, Tweets)
+    case WithStatus(UserInfo, TweetsInfo)
     case WithoutStatus(UserInfo)
     
     public init?(dictionary _dictionary: [String: AnyObject]?){
@@ -26,7 +26,7 @@ public enum Users {
             return nil
         }
         
-        if let status = Tweets(dictionary: dictionary["status"] as? [String: AnyObject]) {
+        if let status = TweetsInfo(dictionary: dictionary["status"] as? [String: AnyObject]) {
             self = .WithStatus(userInfo, status)
         }else {
             self = .WithoutStatus(userInfo)

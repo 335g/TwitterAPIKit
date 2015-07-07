@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - Signle Tweets
+// MARK: - Tweets
 
 public protocol SingleTweetResponseType {
     func tweetFromObject(AnyObject, NSHTTPURLResponse) -> Tweets?
@@ -27,7 +27,7 @@ public extension SingleTweetResponseType {
     }
 }
 
-// MARK: - Multiple Tweets
+// MARK: - Tweets (Multiple)
 
 public protocol MultipleTweetsResponseType {
     func tweetsFromObject(AnyObject, NSHTTPURLResponse) -> [Tweets]?
@@ -52,7 +52,7 @@ public extension MultipleTweetsResponseType {
     }
 }
 
-// MARK: - Single DirectMessage
+// MARK: - DirectMessage
 
 public protocol SingleDirectMessageResponseType {
     func directMessageFromObject(AnyObject, NSHTTPURLResponse) -> DirectMessage?
@@ -71,7 +71,7 @@ public extension SingleDirectMessageResponseType {
     }
 }
 
-// MARK: - Multiple DirectMessage
+// MARK: - DirectMessage (Multiple)
 
 public protocol MultipleDirectMessagesResponseType {
     func directMessagesFromObject(AnyObject, NSHTTPURLResponse) -> [DirectMessage]?
@@ -95,7 +95,7 @@ public extension MultipleDirectMessagesResponseType {
     }
 }
 
-// MARK: - Single Users
+// MARK: - Users
 
 public protocol SingleUserResponseType {
     func userFromObject(AnyObject, NSHTTPURLResponse) -> Users?
@@ -113,5 +113,30 @@ public extension SingleUserResponseType {
         return user
     }
 }
+
+// MARK: - Users (Multiple)
+
+public protocol MultipleUsersResponesType {
+    func usersFromObject(AnyObject, NSHTTPURLResponse) -> [Users]?
+}
+
+public extension MultipleUsersResponesType {
+    public func usersFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> [Users]? {
+        guard let _users = object as? Array<[String: AnyObject]> else {
+            return nil
+        }
+        
+        var users: [Users] = []
+        for _user in  _users {
+            guard let user = Users(dictionary: _user) else {
+                return nil
+            }
+            users.append(user)
+        }
+        
+        return users
+    }
+}
+
 
 

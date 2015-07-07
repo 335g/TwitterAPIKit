@@ -81,55 +81,55 @@ class CallViewController: UIViewController {
             let request = TwitterStatuses.Retweet(client, idStr: "612495859222118404")
             TwitterStatuses.sendRequest(request, handler: handle(TwitterStatuses.Retweet.self))
             
-//        case .FriendsIds:
-//            let user = Twitter.User.withName("oreore_test1")
-//            let request = Twitter.Friends.Ids(client, user: user)
-//            Twitter.Friends.Ids.Method.sendRequest(request, handler: handle(Twitter.Friends.Ids.self))
-//            
-//        case .FriendsList:
-//            let user = Twitter.User.withName("oreore_test1")
-//            let request = Twitter.Friends.List(client, user: user)
-//            Twitter.Friends.List.Method.sendRequest(request, handler: handle(Twitter.Friends.List.self))
-//            
-//        case .FollowersIds:
-//            let user = Twitter.User.withName("oreore_test1")
-//            let request = Twitter.Followers.Ids(client, user: user)
-//            Twitter.Followers.Ids.Method.sendRequest(request, handler: handle(Twitter.Followers.Ids.self))
-//            
-//        case .FollowersList:
-//            let user = Twitter.User.withName("oreore_test1")
-//            let request = Twitter.Followers.List(client, user: user)
-//            Twitter.Followers.List.Method.sendRequest(request, handler: handle(Twitter.Followers.List.self))
-//            
-//        case .UsersLookup:
-//            let user = Twitter.User.withName("oreore_test1")
-//            let request = Twitter.Users.Lookup(client, users: [user])
-//            Twitter.Users.Lookup.Method.sendRequest(request, handler: handle(Twitter.Users.Lookup.self))
-//            
-//        case .UsersShow:
-//            let user = Twitter.User.withName("oreore_test1")
-//            let request = Twitter.Users.Show(client, user: user)
-//            Twitter.Users.Show.Method.sendRequest(request, handler: handle(Twitter.Users.Show.self))
-//            
-//        case .ListsMemberships:
-//            let user = Twitter.User.withName("oreore_test2")
-//            let request = Twitter.Lists.Memberships(client, user: user)
-//            Twitter.Lists.Memberships.Method.sendRequest(request, handler: handle(Twitter.Lists.Memberships.self))
-//            
-//        case .FriendshipsCreate:
-//            let user = Twitter.User.withName("oreore_test1")
-//            let request = Twitter.Friendships.Create(client, user: user)
-//            Twitter.Friendships.Create.Method.sendRequest(request, handler: handle(Twitter.Friendships.Create.self))
-//            
-//        case .FriendshipsDestroy:
-//            let user = Twitter.User.withName("oreore_test2")
-//            let request = Twitter.Friendships.Destroy(client, user: user)
-//            Twitter.Friendships.Destroy.Method.sendRequest(request, handler: handle(Twitter.Friendships.Destroy.self))
-//            
-//        case .DirectMessagesNew:
-//            let user = Twitter.User.withName("oreore_test1")
-//            let request = Twitter.DirectMessages.New(client, user: user, text: "test direct message")
-//            Twitter.DirectMessages.New.Method.sendRequest(request, handler: handle(Twitter.DirectMessages.New.self))
+        case .FriendsIds:
+            let user = User.withName("oreore_test1")
+            let request = TwitterFriends.Ids(client, user: user)
+            TwitterFriends.sendRequest(request, handler: handle(TwitterFriends.Ids.self))
+            
+        case .FriendsList:
+            let user = User.withName("oreore_test1")
+            let request = TwitterFriends.List(client, user: user)
+            TwitterFriends.sendRequest(request, handler: handle(TwitterFriends.List.self))
+            
+        case .FollowersIds:
+            let user = User.withName("oreore_test1")
+            let request = TwitterFollowers.Ids(client, user: user)
+            TwitterFollowers.sendRequest(request, handler: handle(TwitterFollowers.Ids.self))
+            
+        case .FollowersList:
+            let user = User.withName("oreore_test1")
+            let request = TwitterFollowers.List(client, user: user)
+            TwitterFollowers.sendRequest(request, handler: handle(TwitterFollowers.List.self))
+            
+        case .UsersLookup:
+            let user = User.withName("oreore_test1")
+            let request = TwitterUsers.Lookup(client, users: [user])
+            TwitterUsers.sendRequest(request, handler: handle(TwitterUsers.Lookup.self))
+            
+        case .UsersShow:
+            let user = User.withName("oreore_test1")
+            let request = TwitterUsers.Show(client, user: user)
+            TwitterUsers.sendRequest(request, handler: handle(TwitterUsers.Show.self))
+            
+        case .ListsMemberships:
+            let user = User.withName("oreore_test2")
+            let request = TwitterLists.Memberships(client, user: user)
+            TwitterLists.sendRequest(request, handler: handle(TwitterLists.Memberships.self))
+            
+        case .FriendshipsCreate:
+            let user = User.withName("oreore_test1")
+            let request = TwitterFriendships.Create(client, user: user)
+            TwitterFriendships.sendRequest(request, handler: handle(TwitterFriendships.Create.self))
+            
+        case .FriendshipsDestroy:
+            let user = User.withName("oreore_test2")
+            let request = TwitterFriendships.Destroy(client, user: user)
+            TwitterFriendships.sendRequest(request, handler: handle(TwitterFriendships.Destroy.self))
+            
+        case .DirectMessagesNew:
+            let user = User.withName("oreore_test1")
+            let request = TwitterDirectMessages.New(client, user: user, text: "test direct message")
+            TwitterDirectMessages.sendRequest(request, handler: handle(TwitterDirectMessages.New.self))
 
         default:
             print("not implemented")

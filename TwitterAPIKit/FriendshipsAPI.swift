@@ -11,8 +11,8 @@ import APIKit
 
 // MARK: - Request
 
-public protocol FriendshipsGetRequest {}
-public protocol FriendshipsPostRequest {}
+public protocol FriendshipsGetRequest: Request {}
+public protocol FriendshipsPostRequest: Request {}
 
 public extension FriendshipsGetRequest {
     public var baseURL: NSURL {

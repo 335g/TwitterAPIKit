@@ -9,8 +9,7 @@
 import Foundation
 
 public struct UserIDs {
-    public let ids: [Int]?
-    public let idStrs: [String]?
+    public let ids: [String]?
     public let nextCursor: Int
     public let nextCursorStr: String
     public let previousCursor: Int
@@ -26,8 +25,7 @@ public struct UserIDs {
                 return nil
         }
         
-        self.ids = dictionary["ids"] as? [Int]
-        self.idStrs = dictionary["ids"] as? [String]
+        self.ids = dictionary["ids"] as? [String]
         self.nextCursor = nextCursor
         self.nextCursorStr = nextCursorStr
         self.previousCursor = previousCursor
