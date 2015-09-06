@@ -7,14 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		84161C6C1B305AD1001CCFEE /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C661B305AD1001CCFEE /* APIKit.framework */; };
-		84161C6D1B305AD1001CCFEE /* APIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C661B305AD1001CCFEE /* APIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		84161C721B305AD1001CCFEE /* HMAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C691B305AD1001CCFEE /* HMAC.framework */; };
-		84161C731B305AD1001CCFEE /* HMAC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C691B305AD1001CCFEE /* HMAC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		84161C741B305AD1001CCFEE /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C6A1B305AD1001CCFEE /* Result.framework */; };
-		84161C751B305AD1001CCFEE /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C6A1B305AD1001CCFEE /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		84161C761B305AD1001CCFEE /* TwitterAPIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C6B1B305AD1001CCFEE /* TwitterAPIKit.framework */; };
-		84161C771B305AD1001CCFEE /* TwitterAPIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C6B1B305AD1001CCFEE /* TwitterAPIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		844381441AE5292D00EEC4B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844381431AE5292D00EEC4B2 /* AppDelegate.swift */; };
 		844381461AE5292D00EEC4B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844381451AE5292D00EEC4B2 /* ViewController.swift */; };
 		844381491AE5292D00EEC4B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844381471AE5292D00EEC4B2 /* Main.storyboard */; };
@@ -79,16 +71,22 @@
 		84949B0F1B4BE86A002DE195 /* UsersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949B0D1B4BE86A002DE195 /* UsersAPI.swift */; };
 		84BD383C1B9BB87600C3CBCC /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD38361B9BB87600C3CBCC /* APIKit.framework */; };
 		84BD383D1B9BB87600C3CBCC /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD38371B9BB87600C3CBCC /* Base32.framework */; };
-		84BD383E1B9BB87600C3CBCC /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD38381B9BB87600C3CBCC /* Box.framework */; };
 		84BD383F1B9BB87600C3CBCC /* HMAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD38391B9BB87600C3CBCC /* HMAC.framework */; };
 		84BD38401B9BB87600C3CBCC /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD383A1B9BB87600C3CBCC /* Result.framework */; };
-		84BD38411B9BB87600C3CBCC /* TwitterAPIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD383B1B9BB87600C3CBCC /* TwitterAPIKit.framework */; };
-		84BD38421B9BB88A00C3CBCC /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C661B305AD1001CCFEE /* APIKit.framework */; };
-		84BD38431B9BB88A00C3CBCC /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C671B305AD1001CCFEE /* Base32.framework */; };
-		84BD38441B9BB88A00C3CBCC /* HMAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C691B305AD1001CCFEE /* HMAC.framework */; };
-		84BD38451B9BB88A00C3CBCC /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C6A1B305AD1001CCFEE /* Result.framework */; };
-		84BD38461B9BB88A00C3CBCC /* TwitterAPIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C6B1B305AD1001CCFEE /* TwitterAPIKit.framework */; };
-		84BD38481B9BB88B00C3CBCC /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD38471B9BB88B00C3CBCC /* Box.framework */; };
+		84BD384F1B9BBDBA00C3CBCC /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD38491B9BBDBA00C3CBCC /* APIKit.framework */; };
+		84BD38501B9BBDBA00C3CBCC /* APIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD38491B9BBDBA00C3CBCC /* APIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84BD38511B9BBDBA00C3CBCC /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD384A1B9BBDBA00C3CBCC /* Base32.framework */; };
+		84BD38521B9BBDBA00C3CBCC /* Base32.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD384A1B9BBDBA00C3CBCC /* Base32.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84BD38551B9BBDBA00C3CBCC /* HMAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD384C1B9BBDBA00C3CBCC /* HMAC.framework */; };
+		84BD38561B9BBDBA00C3CBCC /* HMAC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD384C1B9BBDBA00C3CBCC /* HMAC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84BD38571B9BBDBA00C3CBCC /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD384D1B9BBDBA00C3CBCC /* Result.framework */; };
+		84BD38581B9BBDBA00C3CBCC /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD384D1B9BBDBA00C3CBCC /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84BD38591B9BBDBA00C3CBCC /* TwitterAPIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD384E1B9BBDBA00C3CBCC /* TwitterAPIKit.framework */; };
+		84BD385A1B9BBDBA00C3CBCC /* TwitterAPIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD384E1B9BBDBA00C3CBCC /* TwitterAPIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84BD38611B9BC10600C3CBCC /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD38491B9BBDBA00C3CBCC /* APIKit.framework */; };
+		84BD38621B9BC10600C3CBCC /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD384A1B9BBDBA00C3CBCC /* Base32.framework */; };
+		84BD38641B9BC10600C3CBCC /* HMAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD384C1B9BBDBA00C3CBCC /* HMAC.framework */; };
+		84BD38651B9BC10600C3CBCC /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD384D1B9BBDBA00C3CBCC /* Result.framework */; };
 		84E082B71AE52D5B00A32EEC /* AppInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84E082B61AE52D5B00A32EEC /* AppInfo.plist */; };
 		84E082B91AE52DE200A32EEC /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E082B81AE52DE200A32EEC /* AuthService.swift */; };
 /* End PBXBuildFile section */
@@ -111,20 +109,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		84782F8D1AE5371D005CDC2B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				84161C771B305AD1001CCFEE /* TwitterAPIKit.framework in Embed Frameworks */,
-				84161C751B305AD1001CCFEE /* Result.framework in Embed Frameworks */,
-				84161C6D1B305AD1001CCFEE /* APIKit.framework in Embed Frameworks */,
-				84161C731B305AD1001CCFEE /* HMAC.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		84A330161B1018E3000E65B8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -134,14 +118,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		84BD385B1B9BBDBA00C3CBCC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				84BD38521B9BBDBA00C3CBCC /* Base32.framework in Embed Frameworks */,
+				84BD385A1B9BBDBA00C3CBCC /* TwitterAPIKit.framework in Embed Frameworks */,
+				84BD38581B9BBDBA00C3CBCC /* Result.framework in Embed Frameworks */,
+				84BD38501B9BBDBA00C3CBCC /* APIKit.framework in Embed Frameworks */,
+				84BD38561B9BBDBA00C3CBCC /* HMAC.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		84161C661B305AD1001CCFEE /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = ../Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
-		84161C671B305AD1001CCFEE /* Base32.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Base32.framework; path = ../Carthage/Build/iOS/Base32.framework; sourceTree = "<group>"; };
-		84161C691B305AD1001CCFEE /* HMAC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HMAC.framework; path = ../Carthage/Build/iOS/HMAC.framework; sourceTree = "<group>"; };
-		84161C6A1B305AD1001CCFEE /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
-		84161C6B1B305AD1001CCFEE /* TwitterAPIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterAPIKit.framework; path = ../Carthage/Build/iOS/TwitterAPIKit.framework; sourceTree = "<group>"; };
 		8443813F1AE5292D00EEC4B2 /* APIChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APIChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		844381421AE5292D00EEC4B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		844381431AE5292D00EEC4B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -212,11 +206,13 @@
 		84949B0D1B4BE86A002DE195 /* UsersAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersAPI.swift; sourceTree = "<group>"; };
 		84BD38361B9BB87600C3CBCC /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = ../Carthage/Build/Mac/APIKit.framework; sourceTree = "<group>"; };
 		84BD38371B9BB87600C3CBCC /* Base32.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Base32.framework; path = ../Carthage/Build/Mac/Base32.framework; sourceTree = "<group>"; };
-		84BD38381B9BB87600C3CBCC /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = ../Carthage/Build/Mac/Box.framework; sourceTree = "<group>"; };
 		84BD38391B9BB87600C3CBCC /* HMAC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HMAC.framework; path = ../Carthage/Build/Mac/HMAC.framework; sourceTree = "<group>"; };
 		84BD383A1B9BB87600C3CBCC /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
-		84BD383B1B9BB87600C3CBCC /* TwitterAPIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterAPIKit.framework; path = ../Carthage/Build/Mac/TwitterAPIKit.framework; sourceTree = "<group>"; };
-		84BD38471B9BB88B00C3CBCC /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = ../Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
+		84BD38491B9BBDBA00C3CBCC /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = ../Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
+		84BD384A1B9BBDBA00C3CBCC /* Base32.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Base32.framework; path = ../Carthage/Build/iOS/Base32.framework; sourceTree = "<group>"; };
+		84BD384C1B9BBDBA00C3CBCC /* HMAC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HMAC.framework; path = ../Carthage/Build/iOS/HMAC.framework; sourceTree = "<group>"; };
+		84BD384D1B9BBDBA00C3CBCC /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		84BD384E1B9BBDBA00C3CBCC /* TwitterAPIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterAPIKit.framework; path = ../Carthage/Build/iOS/TwitterAPIKit.framework; sourceTree = "<group>"; };
 		84E082B61AE52D5B00A32EEC /* AppInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppInfo.plist; sourceTree = "<group>"; };
 		84E082B81AE52DE200A32EEC /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,10 +222,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84161C761B305AD1001CCFEE /* TwitterAPIKit.framework in Frameworks */,
-				84161C741B305AD1001CCFEE /* Result.framework in Frameworks */,
-				84161C6C1B305AD1001CCFEE /* APIKit.framework in Frameworks */,
-				84161C721B305AD1001CCFEE /* HMAC.framework in Frameworks */,
+				84BD38511B9BBDBA00C3CBCC /* Base32.framework in Frameworks */,
+				84BD38591B9BBDBA00C3CBCC /* TwitterAPIKit.framework in Frameworks */,
+				84BD38571B9BBDBA00C3CBCC /* Result.framework in Frameworks */,
+				84BD384F1B9BBDBA00C3CBCC /* APIKit.framework in Frameworks */,
+				84BD38551B9BBDBA00C3CBCC /* HMAC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,10 +236,8 @@
 			files = (
 				84BD383C1B9BB87600C3CBCC /* APIKit.framework in Frameworks */,
 				84BD383D1B9BB87600C3CBCC /* Base32.framework in Frameworks */,
-				84BD383E1B9BB87600C3CBCC /* Box.framework in Frameworks */,
 				84BD383F1B9BB87600C3CBCC /* HMAC.framework in Frameworks */,
 				84BD38401B9BB87600C3CBCC /* Result.framework in Frameworks */,
-				84BD38411B9BB87600C3CBCC /* TwitterAPIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,12 +252,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84BD38481B9BB88B00C3CBCC /* Box.framework in Frameworks */,
-				84BD38421B9BB88A00C3CBCC /* APIKit.framework in Frameworks */,
-				84BD38431B9BB88A00C3CBCC /* Base32.framework in Frameworks */,
-				84BD38441B9BB88A00C3CBCC /* HMAC.framework in Frameworks */,
-				84BD38451B9BB88A00C3CBCC /* Result.framework in Frameworks */,
-				84BD38461B9BB88A00C3CBCC /* TwitterAPIKit.framework in Frameworks */,
+				84BD38611B9BC10600C3CBCC /* APIKit.framework in Frameworks */,
+				84BD38621B9BC10600C3CBCC /* Base32.framework in Frameworks */,
+				84BD38641B9BC10600C3CBCC /* HMAC.framework in Frameworks */,
+				84BD38651B9BC10600C3CBCC /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,11 +273,11 @@
 		84161C651B305AA3001CCFEE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				84161C661B305AD1001CCFEE /* APIKit.framework */,
-				84161C671B305AD1001CCFEE /* Base32.framework */,
-				84161C691B305AD1001CCFEE /* HMAC.framework */,
-				84161C6A1B305AD1001CCFEE /* Result.framework */,
-				84161C6B1B305AD1001CCFEE /* TwitterAPIKit.framework */,
+				84BD38491B9BBDBA00C3CBCC /* APIKit.framework */,
+				84BD384A1B9BBDBA00C3CBCC /* Base32.framework */,
+				84BD384C1B9BBDBA00C3CBCC /* HMAC.framework */,
+				84BD384D1B9BBDBA00C3CBCC /* Result.framework */,
+				84BD384E1B9BBDBA00C3CBCC /* TwitterAPIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -534,13 +527,10 @@
 		84A330101B1018B7000E65B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				84BD38471B9BB88B00C3CBCC /* Box.framework */,
 				84BD38361B9BB87600C3CBCC /* APIKit.framework */,
 				84BD38371B9BB87600C3CBCC /* Base32.framework */,
-				84BD38381B9BB87600C3CBCC /* Box.framework */,
 				84BD38391B9BB87600C3CBCC /* HMAC.framework */,
 				84BD383A1B9BB87600C3CBCC /* Result.framework */,
-				84BD383B1B9BB87600C3CBCC /* TwitterAPIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -574,7 +564,8 @@
 				8443813B1AE5292D00EEC4B2 /* Sources */,
 				8443813C1AE5292D00EEC4B2 /* Frameworks */,
 				8443813D1AE5292D00EEC4B2 /* Resources */,
-				84782F8D1AE5371D005CDC2B /* Embed Frameworks */,
+				84BD385B1B9BBDBA00C3CBCC /* Embed Frameworks */,
+				84BD38601B9BBEF300C3CBCC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -742,6 +733,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		84BD38601B9BBEF300C3CBCC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/APIKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Base32.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/HMAC.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/TwitterAPIKit.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8443813B1AE5292D00EEC4B2 /* Sources */ = {
