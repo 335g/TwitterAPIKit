@@ -1,3 +1,3 @@
-github "335g/APIKit" "Add-APIError-to-Compile-Sources"
-github "335g/HMAC" == 0.3.1
-github "milestoneeee/Box" "master"
+github "ishkawa/APIKit" >= 1.0
+github "norio-nomura/HMAC" "swift-2"
+github "norio-nomura/Base32" "swift-2"

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import TwitterAPIKit
 import HMAC
 
 extension Dictionary {
@@ -21,7 +20,7 @@ extension Dictionary {
             parts.append(query)
         }
         
-        return "&".join(parts)
+        return parts.joinWithSeparator("&")
     }
 }
 

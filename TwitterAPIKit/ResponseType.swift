@@ -11,7 +11,7 @@ import Foundation
 // MARK: - Tweets
 
 public protocol SingleTweetResponseType {
-    func tweetFromObject(AnyObject, NSHTTPURLResponse) -> Tweets?
+    func tweetFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> Tweets?
 }
 
 public extension SingleTweetResponseType {
@@ -30,7 +30,7 @@ public extension SingleTweetResponseType {
 // MARK: - Tweets (Multiple)
 
 public protocol MultipleTweetsResponseType {
-    func tweetsFromObject(AnyObject, NSHTTPURLResponse) -> [Tweets]?
+    func tweetsFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> [Tweets]?
 }
 
 public extension MultipleTweetsResponseType {
@@ -55,7 +55,7 @@ public extension MultipleTweetsResponseType {
 // MARK: - DirectMessage
 
 public protocol SingleDirectMessageResponseType {
-    func directMessageFromObject(AnyObject, NSHTTPURLResponse) -> DirectMessage?
+    func directMessageFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> DirectMessage?
 }
 
 public extension SingleDirectMessageResponseType {
@@ -74,7 +74,7 @@ public extension SingleDirectMessageResponseType {
 // MARK: - DirectMessage (Multiple)
 
 public protocol MultipleDirectMessagesResponseType {
-    func directMessagesFromObject(AnyObject, NSHTTPURLResponse) -> [DirectMessage]?
+    func directMessagesFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> [DirectMessage]?
 }
 
 public extension MultipleDirectMessagesResponseType {
@@ -98,7 +98,7 @@ public extension MultipleDirectMessagesResponseType {
 // MARK: - Users
 
 public protocol SingleUserResponseType {
-    func userFromObject(AnyObject, NSHTTPURLResponse) -> Users?
+    func userFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> Users?
 }
 
 public extension SingleUserResponseType {
@@ -117,7 +117,7 @@ public extension SingleUserResponseType {
 // MARK: - Users (Multiple)
 
 public protocol MultipleUsersResponesType {
-    func usersFromObject(AnyObject, NSHTTPURLResponse) -> [Users]?
+    func usersFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> [Users]?
 }
 
 public extension MultipleUsersResponesType {

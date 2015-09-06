@@ -67,8 +67,8 @@ public extension TwitterUsers {
                 
                 self.client = client
                 self._parameters = [
-                    "screen_name": ",".join(screenNames(users)),
-                    "user_id": ",".join(userIds(users)),
+                    "screen_name": screenNames(users).joinWithSeparator(","),
+                    "user_id": userIds(users).joinWithSeparator(","),
                     "include_entities": includeEntities
                 ]
         }

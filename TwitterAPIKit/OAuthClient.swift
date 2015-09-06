@@ -17,8 +17,8 @@ public protocol OAuthClientType {
     var version: String { get }
     var signatureMethod: String { get }
     var dataEncoding: UInt { get }
-    func authorizationHeader(APIKit.HTTPMethod, String, [String: AnyObject], Bool) -> String
-    func signature(APIKit.HTTPMethod, String, [String: AnyObject]) -> String
+    func authorizationHeader(method: APIKit.HTTPMethod, _ url: String, _ params: [String: AnyObject], _ isUpload: Bool) -> String
+    func signature(method: APIKit.HTTPMethod, _ url: String, _ params: [String: AnyObject]) -> String
     
     ///
     /// MARK: Other
@@ -83,7 +83,7 @@ public extension OAuthClientType {
             }
         }
         
-        return "OAuth " + ", ".join(headerComponents)
+        return "OAuth " + headerComponents.joinWithSeparator(", ")
     }
     
     func signature(method: APIKit.HTTPMethod, _ url: String, _ params: [String: AnyObject]) -> String {
@@ -96,7 +96,7 @@ public extension OAuthClientType {
         var components: [String] = params.urlEncodedQueryStringWithEncoding(dataEncoding).componentsSeparatedByString("&")
         components.sortInPlace { $0 < $1 }
         
-        let paramStr: String = "&".join(components)
+        let paramStr: String = components.joinWithSeparator("&")
         let encodedParamStr: String = paramStr.urlEncodedStringWithEncoding(dataEncoding)
         let encodedUrl: String = url.urlEncodedStringWithEncoding(dataEncoding)
         let signatureBaseStr: String = "\(method.rawValue)&\(encodedUrl)&\(encodedParamStr)"

@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		84161C4F1B3059EE001CCFEE /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C4A1B3059EE001CCFEE /* APIKit.framework */; };
-		84161C511B3059EE001CCFEE /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C4C1B3059EE001CCFEE /* Box.framework */; };
-		84161C521B3059EE001CCFEE /* HMAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C4D1B3059EE001CCFEE /* HMAC.framework */; };
-		84161C531B3059EE001CCFEE /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C4E1B3059EE001CCFEE /* Result.framework */; };
 		84161C6C1B305AD1001CCFEE /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C661B305AD1001CCFEE /* APIKit.framework */; };
 		84161C6D1B305AD1001CCFEE /* APIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C661B305AD1001CCFEE /* APIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84161C721B305AD1001CCFEE /* HMAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C691B305AD1001CCFEE /* HMAC.framework */; };
@@ -81,9 +77,18 @@
 		84949B0C1B4BE199002DE195 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949B0A1B4BE199002DE195 /* SearchResult.swift */; };
 		84949B0E1B4BE86A002DE195 /* UsersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949B0D1B4BE86A002DE195 /* UsersAPI.swift */; };
 		84949B0F1B4BE86A002DE195 /* UsersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949B0D1B4BE86A002DE195 /* UsersAPI.swift */; };
-		84D490971B353C3300390744 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C661B305AD1001CCFEE /* APIKit.framework */; };
-		84D490991B353C3300390744 /* HMAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C691B305AD1001CCFEE /* HMAC.framework */; };
-		84D4909A1B353C3300390744 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C6A1B305AD1001CCFEE /* Result.framework */; };
+		84BD383C1B9BB87600C3CBCC /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD38361B9BB87600C3CBCC /* APIKit.framework */; };
+		84BD383D1B9BB87600C3CBCC /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD38371B9BB87600C3CBCC /* Base32.framework */; };
+		84BD383E1B9BB87600C3CBCC /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD38381B9BB87600C3CBCC /* Box.framework */; };
+		84BD383F1B9BB87600C3CBCC /* HMAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD38391B9BB87600C3CBCC /* HMAC.framework */; };
+		84BD38401B9BB87600C3CBCC /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD383A1B9BB87600C3CBCC /* Result.framework */; };
+		84BD38411B9BB87600C3CBCC /* TwitterAPIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD383B1B9BB87600C3CBCC /* TwitterAPIKit.framework */; };
+		84BD38421B9BB88A00C3CBCC /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C661B305AD1001CCFEE /* APIKit.framework */; };
+		84BD38431B9BB88A00C3CBCC /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C671B305AD1001CCFEE /* Base32.framework */; };
+		84BD38441B9BB88A00C3CBCC /* HMAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C691B305AD1001CCFEE /* HMAC.framework */; };
+		84BD38451B9BB88A00C3CBCC /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C6A1B305AD1001CCFEE /* Result.framework */; };
+		84BD38461B9BB88A00C3CBCC /* TwitterAPIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84161C6B1B305AD1001CCFEE /* TwitterAPIKit.framework */; };
+		84BD38481B9BB88B00C3CBCC /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BD38471B9BB88B00C3CBCC /* Box.framework */; };
 		84E082B71AE52D5B00A32EEC /* AppInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84E082B61AE52D5B00A32EEC /* AppInfo.plist */; };
 		84E082B91AE52DE200A32EEC /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E082B81AE52DE200A32EEC /* AuthService.swift */; };
 /* End PBXBuildFile section */
@@ -132,10 +137,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		84161C4A1B3059EE001CCFEE /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = ../Carthage/Build/Mac/APIKit.framework; sourceTree = "<group>"; };
-		84161C4C1B3059EE001CCFEE /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = ../Carthage/Build/Mac/Box.framework; sourceTree = "<group>"; };
-		84161C4D1B3059EE001CCFEE /* HMAC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HMAC.framework; path = ../Carthage/Build/Mac/HMAC.framework; sourceTree = "<group>"; };
-		84161C4E1B3059EE001CCFEE /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
 		84161C661B305AD1001CCFEE /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = ../Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
 		84161C671B305AD1001CCFEE /* Base32.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Base32.framework; path = ../Carthage/Build/iOS/Base32.framework; sourceTree = "<group>"; };
 		84161C691B305AD1001CCFEE /* HMAC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HMAC.framework; path = ../Carthage/Build/iOS/HMAC.framework; sourceTree = "<group>"; };
@@ -209,6 +210,13 @@
 		84949B071B4BE04D002DE195 /* SearchAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAPI.swift; sourceTree = "<group>"; };
 		84949B0A1B4BE199002DE195 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		84949B0D1B4BE86A002DE195 /* UsersAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersAPI.swift; sourceTree = "<group>"; };
+		84BD38361B9BB87600C3CBCC /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = ../Carthage/Build/Mac/APIKit.framework; sourceTree = "<group>"; };
+		84BD38371B9BB87600C3CBCC /* Base32.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Base32.framework; path = ../Carthage/Build/Mac/Base32.framework; sourceTree = "<group>"; };
+		84BD38381B9BB87600C3CBCC /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = ../Carthage/Build/Mac/Box.framework; sourceTree = "<group>"; };
+		84BD38391B9BB87600C3CBCC /* HMAC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HMAC.framework; path = ../Carthage/Build/Mac/HMAC.framework; sourceTree = "<group>"; };
+		84BD383A1B9BB87600C3CBCC /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
+		84BD383B1B9BB87600C3CBCC /* TwitterAPIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterAPIKit.framework; path = ../Carthage/Build/Mac/TwitterAPIKit.framework; sourceTree = "<group>"; };
+		84BD38471B9BB88B00C3CBCC /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = ../Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
 		84E082B61AE52D5B00A32EEC /* AppInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppInfo.plist; sourceTree = "<group>"; };
 		84E082B81AE52DE200A32EEC /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -229,10 +237,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84161C4F1B3059EE001CCFEE /* APIKit.framework in Frameworks */,
-				84161C511B3059EE001CCFEE /* Box.framework in Frameworks */,
-				84161C521B3059EE001CCFEE /* HMAC.framework in Frameworks */,
-				84161C531B3059EE001CCFEE /* Result.framework in Frameworks */,
+				84BD383C1B9BB87600C3CBCC /* APIKit.framework in Frameworks */,
+				84BD383D1B9BB87600C3CBCC /* Base32.framework in Frameworks */,
+				84BD383E1B9BB87600C3CBCC /* Box.framework in Frameworks */,
+				84BD383F1B9BB87600C3CBCC /* HMAC.framework in Frameworks */,
+				84BD38401B9BB87600C3CBCC /* Result.framework in Frameworks */,
+				84BD38411B9BB87600C3CBCC /* TwitterAPIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,9 +257,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84D490971B353C3300390744 /* APIKit.framework in Frameworks */,
-				84D490991B353C3300390744 /* HMAC.framework in Frameworks */,
-				84D4909A1B353C3300390744 /* Result.framework in Frameworks */,
+				84BD38481B9BB88B00C3CBCC /* Box.framework in Frameworks */,
+				84BD38421B9BB88A00C3CBCC /* APIKit.framework in Frameworks */,
+				84BD38431B9BB88A00C3CBCC /* Base32.framework in Frameworks */,
+				84BD38441B9BB88A00C3CBCC /* HMAC.framework in Frameworks */,
+				84BD38451B9BB88A00C3CBCC /* Result.framework in Frameworks */,
+				84BD38461B9BB88A00C3CBCC /* TwitterAPIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,10 +534,13 @@
 		84A330101B1018B7000E65B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				84161C4A1B3059EE001CCFEE /* APIKit.framework */,
-				84161C4C1B3059EE001CCFEE /* Box.framework */,
-				84161C4D1B3059EE001CCFEE /* HMAC.framework */,
-				84161C4E1B3059EE001CCFEE /* Result.framework */,
+				84BD38471B9BB88B00C3CBCC /* Box.framework */,
+				84BD38361B9BB87600C3CBCC /* APIKit.framework */,
+				84BD38371B9BB87600C3CBCC /* Base32.framework */,
+				84BD38381B9BB87600C3CBCC /* Box.framework */,
+				84BD38391B9BB87600C3CBCC /* HMAC.framework */,
+				84BD383A1B9BB87600C3CBCC /* Result.framework */,
+				84BD383B1B9BB87600C3CBCC /* TwitterAPIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
