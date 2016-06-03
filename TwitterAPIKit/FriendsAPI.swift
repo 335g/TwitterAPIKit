@@ -11,25 +11,21 @@ import APIKit
 
 // MARK: - Request
 
-public protocol FriendsGetRequest: Request {}
+public protocol FriendsGetRequest: RequestType {}
 
 public extension FriendsGetRequest {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/1.1/friends")!
     }
-    public var requestBodyBuilder: RequestBodyBuilder {
-        return .JSON(writingOptions: .PrettyPrinted)
-    }
-    public var responseBodyParser: ResponseBodyParser {
-        return .JSON(readingOptions: .AllowFragments)
-    }
+	
+	public var dataParser: DataParserType {
+		return JSONDataParser(readingOptions: .AllowFragments)
+	}
 }
 
 // MARK: - API
 
-public class TwitterFriends: API {}
-
-public extension TwitterFriends {
+public enum TwitterFriends {
     
     ///
     /// https://dev.twitter.com/rest/reference/get/friends/ids
@@ -76,12 +72,12 @@ public extension TwitterFriends {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Ids.Response? {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Ids.Response {
             guard let
                 dictionary = object as? [String: AnyObject],
                 ids = UserIDs(dictionary: dictionary) else {
                     
-                    return nil
+                    throw DecodeError.Fail
             }
             
             return ids
@@ -135,12 +131,12 @@ public extension TwitterFriends {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> List.Response? {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> List.Response {
             guard let
                 dictionary = object as? [String: AnyObject],
                 list = UsersList(dictionary: dictionary) else {
                     
-                    return nil
+                    throw DecodeError.Fail
             }
             
             return list

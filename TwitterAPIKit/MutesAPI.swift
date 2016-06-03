@@ -11,38 +11,32 @@ import APIKit
 
 // MARK: Request
 
-public protocol MutesGetRequest: Request {}
-public protocol MutesPostRequest: Request {}
+public protocol MutesGetRequest: RequestType {}
+public protocol MutesPostRequest: RequestType {}
 
 public extension MutesGetRequest {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/1.1/mutes/users")!
     }
-    public var requestBodyBuilder: RequestBodyBuilder {
-        return .JSON(writingOptions: .PrettyPrinted)
-    }
-    public var responseBodyParser: ResponseBodyParser {
-        return .JSON(readingOptions: .AllowFragments)
-    }
+	
+	public var dataParser: DataParserType {
+		return JSONDataParser(readingOptions: .AllowFragments)
+	}
 }
 
 public extension MutesPostRequest {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/1.1/mutes/users")!
     }
-    public var requestBodyBuilder: RequestBodyBuilder {
-        return .URL(encoding: NSUTF8StringEncoding)
-    }
-    public var responseBodyParser: ResponseBodyParser {
-        return .JSON(readingOptions: .AllowFragments)
-    }
+	
+	public var dataParser: DataParserType {
+		return JSONDataParser(readingOptions: .AllowFragments)
+	}
 }
 
 // MARK: API
 
-public class TwitterMutes: API {}
-
-public extension TwitterMutes {
+public enum TwitterMutes {
     
     ///
     /// https://dev.twitter.com/rest/reference/get/mutes/users/ids
@@ -81,12 +75,12 @@ public extension TwitterMutes {
                 self._parameters = ["cursor": cursorStr]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Ids.Response? {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Ids.Response {
             guard let
                 dictionary = object as? [String: AnyObject],
                 ids = UserIDs(dictionary: dictionary) else {
                     
-                    return nil
+                    throw DecodeError.Fail
             }
             
             return ids
@@ -136,12 +130,12 @@ public extension TwitterMutes {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> List.Response? {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> List.Response {
             guard let
                 dictionary = object as? [String: AnyObject],
                 list = UsersList(dictionary: dictionary) else {
                     
-                    return nil
+                    throw DecodeError.Fail
             }
             
             return list
@@ -185,8 +179,8 @@ public extension TwitterMutes {
                 self._parameters = [user.key: user.obj]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Create.Response? {
-            return self.userFromObject(object, URLResponse)
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Create.Response {
+            return try userFromObject(object, URLResponse)
         }
     }
     
@@ -227,8 +221,8 @@ public extension TwitterMutes {
                 self._parameters = [user.key: user.obj]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Destroy.Response? {
-            return self.userFromObject(object, URLResponse)
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Destroy.Response {
+            return try userFromObject(object, URLResponse)
         }
     }
 }

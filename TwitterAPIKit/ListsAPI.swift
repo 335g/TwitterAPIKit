@@ -11,25 +11,21 @@ import APIKit
 
 // MARK: - Request
 
-public protocol ListsGetRequest: Request {}
+public protocol ListsGetRequest: RequestType {}
 
 public extension ListsGetRequest {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/1.1/lists")!
     }
-    public var requestBodyBuilder: RequestBodyBuilder {
-        return .JSON(writingOptions: .PrettyPrinted)
-    }
-    public var responseBodyParser: ResponseBodyParser {
-        return .JSON(readingOptions: .AllowFragments)
-    }
+	
+	public var dataParser: DataParserType {
+		return JSONDataParser(readingOptions: .AllowFragments)
+	}
 }
 
 // MARK: - API
 
-public class TwitterLists: API {}
-
-public extension TwitterLists {
+public enum TwitterLists {
     
     ///
     /// https://dev.twitter.com/rest/reference/get/lists/memberships
@@ -76,12 +72,12 @@ public extension TwitterLists {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Memberships.Response? {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Memberships.Response {
             guard let
                 dictionary = object as? [String: AnyObject],
                 list = ListsList(dictionary: dictionary) else {
                     
-                    return nil
+                    throw DecodeError.Fail
             }
             
             return list

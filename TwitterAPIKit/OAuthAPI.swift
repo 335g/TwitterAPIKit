@@ -9,28 +9,24 @@
 import Foundation
 import APIKit
 
-public protocol OAuthPostRequest: Request {}
+public protocol OAuthPostRequest: RequestType {}
 
 public extension OAuthPostRequest {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/oauth")!
     }
-    public var requestBodyBuilder: RequestBodyBuilder {
-        return .URL(encoding: NSUTF8StringEncoding)
-    }
-    public var responseBodyParser: ResponseBodyParser {
-        return .URL(encoding: NSUTF8StringEncoding)
-    }
+	
+	public var dataParser: DataParserType {
+		return JSONDataParser(readingOptions: .AllowFragments)
+	}
 }
 
-public class TwitterOAuth: API {
-    public class func authorizeURL(requestToken: String) -> NSURL {
-        return NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=" + requestToken)!
-    }
-}
-
-public extension TwitterOAuth {
-    
+public enum TwitterOAuth {
+	
+	public static func authorizeURL(requestToken: String) -> NSURL {
+		return NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=" + requestToken)!
+	}
+	
     ///
     /// https://dev.twitter.com/oauth/reference/post/oauth/request_token
     ///
@@ -65,12 +61,12 @@ public extension TwitterOAuth {
             self.callback = callback
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> RequestToken.Response? {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> RequestToken.Response {
             guard
                 let dictionary = object as? [String: AnyObject],
                 let result = RequestTokenResult(dictionary: dictionary) else {
                     
-                    return nil
+                    throw DecodeError.Fail
             }
             
             return result
@@ -110,13 +106,14 @@ public extension TwitterOAuth {
             self.verifier = verifier
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> AccessToken.Response? {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> AccessToken.Response {
             guard
                 let dictionary = object as? [String: AnyObject],
                 let result = AccessTokenResult(dictionary: dictionary) else {
                     
-                    return nil
+					throw DecodeError.Fail
             }
+			
             return result
         }
     }

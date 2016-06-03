@@ -11,16 +11,16 @@ import Foundation
 // MARK: - Tweets
 
 public protocol SingleTweetResponseType {
-    func tweetFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> Tweets?
+    func tweetFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) throws -> Tweets
 }
 
 public extension SingleTweetResponseType {
-    public func tweetFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> Tweets? {
+    public func tweetFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) throws -> Tweets {
         guard let
             dictionary = object as? [String: AnyObject],
             tweet = Tweets(dictionary: dictionary) else {
                 
-                return nil
+                throw DecodeError.Fail
         }
         
         return tweet
@@ -30,19 +30,19 @@ public extension SingleTweetResponseType {
 // MARK: - Tweets (Multiple)
 
 public protocol MultipleTweetsResponseType {
-    func tweetsFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> [Tweets]?
+    func tweetsFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) throws -> [Tweets]
 }
 
 public extension MultipleTweetsResponseType {
-    public func tweetsFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> [Tweets]? {
+    public func tweetsFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) throws -> [Tweets] {
         guard let array = object as? Array<[String: AnyObject]> else {
-            return nil
+            throw DecodeError.Fail
         }
         
         var tweets: [Tweets] = []
         for element in array {
             guard let tweet = Tweets(dictionary: element) else {
-                return nil
+                throw DecodeError.Fail
             }
             
             tweets.append(tweet)
@@ -54,60 +54,63 @@ public extension MultipleTweetsResponseType {
 
 // MARK: - DirectMessage
 
+public enum SingleDirectMessageResponseError: ErrorType {
+	case DecodeError
+}
+
 public protocol SingleDirectMessageResponseType {
-    func directMessageFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> DirectMessage?
+	func directMessageFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) throws -> DirectMessage
 }
 
 public extension SingleDirectMessageResponseType {
-    public func directMessageFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> DirectMessage? {
-        guard let
-            dictionary = object as? [String: AnyObject],
-            dm = DirectMessage(dictionary: dictionary) else {
-                
-                return nil
-        }
-        
-        return dm
-    }
+	public func directMessageFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) throws -> DirectMessage {
+		guard let
+			dictionary = object as? [String: AnyObject],
+			dm = DirectMessage(dictionary: dictionary) else {
+				throw SingleDirectMessageResponseError.DecodeError
+		}
+		
+		return dm
+	}
 }
 
 // MARK: - DirectMessage (Multiple)
 
 public protocol MultipleDirectMessagesResponseType {
-    func directMessagesFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> [DirectMessage]?
+	func directMessagesFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) throws -> [DirectMessage]
 }
 
 public extension MultipleDirectMessagesResponseType {
-    public func directMessagesFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> [DirectMessage]? {
-        guard let array = object as? Array<[String: AnyObject]> else {
-            return nil
-        }
-        
-        var messages: [DirectMessage] = []
-        for element in array {
-            guard let dm = DirectMessage(dictionary: element) else {
-                return nil
-            }
-            messages.append(dm)
-        }
-        
-        return messages
-    }
+	public func directMessagesFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) throws -> [DirectMessage] {
+		guard let array = object as? Array<[String: AnyObject]> else {
+			throw DecodeError.Fail
+		}
+		
+		var messages: [DirectMessage] = []
+		for element in array {
+			guard let dm = DirectMessage(dictionary: element) else {
+				throw DecodeError.Fail
+			}
+			messages.append(dm)
+		}
+		
+		return messages
+	}
 }
 
 // MARK: - Users
 
 public protocol SingleUserResponseType {
-    func userFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> Users?
+    func userFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) throws -> Users
 }
 
 public extension SingleUserResponseType {
-    public func userFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> Users? {
+    public func userFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) throws -> Users {
         guard let
             dictionary = object as? [String: AnyObject],
             user = Users(dictionary: dictionary) else {
                 
-                return nil
+                throw DecodeError.Fail
         }
         
         return user
@@ -117,19 +120,19 @@ public extension SingleUserResponseType {
 // MARK: - Users (Multiple)
 
 public protocol MultipleUsersResponesType {
-    func usersFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> [Users]?
+    func usersFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) throws -> [Users]
 }
 
 public extension MultipleUsersResponesType {
-    public func usersFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) -> [Users]? {
+    public func usersFromObject(object: AnyObject, _ URLResponse: NSHTTPURLResponse) throws -> [Users] {
         guard let _users = object as? Array<[String: AnyObject]> else {
-            return nil
+            throw DecodeError.Fail
         }
         
         var users: [Users] = []
         for _user in  _users {
             guard let user = Users(dictionary: _user) else {
-                return nil
+                throw DecodeError.Fail
             }
             users.append(user)
         }

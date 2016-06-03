@@ -1,9 +1,12 @@
 [submodule "Carthage/Checkouts/Result"]
 	path = Carthage/Checkouts/Result
 	url = https://github.com/antitypical/Result.git
-[submodule "Carthage/Checkouts/xcconfigs"]
-	path = Carthage/Checkouts/xcconfigs
-	url = https://github.com/jspahrsummers/xcconfigs.git
 [submodule "Carthage/Checkouts/APIKit"]
 	path = Carthage/Checkouts/APIKit
 	url = https://github.com/ishkawa/APIKit.git
+[submodule "Carthage/Checkouts/HMAC"]
+	path = Carthage/Checkouts/HMAC
+	url = https://github.com/norio-nomura/HMAC.git
+[submodule "Carthage/Checkouts/Base32"]
+	path = Carthage/Checkouts/Base32
+	url = https://github.com/norio-nomura/Base32.git

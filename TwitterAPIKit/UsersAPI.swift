@@ -11,25 +11,21 @@ import APIKit
 
 // MARK: Request
 
-public protocol UsersGetRequest: Request {}
+public protocol UsersGetRequest: RequestType {}
 
 public extension UsersGetRequest {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/1.1/users")!
     }
-    public var requestBodyBuilder: RequestBodyBuilder {
-        return .JSON(writingOptions: .PrettyPrinted)
-    }
-    public var responseBodyParser: ResponseBodyParser {
-        return .JSON(readingOptions: .AllowFragments)
-    }
+	
+	public var dataParser: DataParserType {
+		return JSONDataParser(readingOptions: .AllowFragments)
+	}
 }
 
 // MARK: API
 
-public class TwitterUsers: API {}
-
-public extension TwitterUsers {
+public enum TwitterUsers {
     
     ///
     /// https://dev.twitter.com/rest/reference/get/users/lookup
@@ -73,9 +69,9 @@ public extension TwitterUsers {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Lookup.Response? {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Lookup.Response {
             print(object)
-            return self.usersFromObject(object, URLResponse)
+            return try usersFromObject(object, URLResponse)
         }
     }
     
@@ -120,8 +116,8 @@ public extension TwitterUsers {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Show.Response? {
-            return self.userFromObject(object, URLResponse)
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Show.Response {
+            return try userFromObject(object, URLResponse)
         }
     }
     

@@ -11,23 +11,21 @@ import APIKit
 
 // MARK: Request
 
-public protocol SearchGetRequest: Request {}
+public protocol SearchGetRequest: RequestType {}
 
 public extension SearchGetRequest {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/1.1/search")!
     }
-    public var requestBodyBuilder: RequestBodyBuilder {
-        return .JSON(writingOptions: .PrettyPrinted)
-    }
-    public var responseBodyParser: ResponseBodyParser {
-        return .JSON(readingOptions: .AllowFragments)
-    }
+	
+	public var dataParser: DataParserType {
+		return JSONDataParser(readingOptions: .AllowFragments)
+	}
 }
 
 // MARK: API
 
-public class TwitterSearch: API {
+public enum TwitterSearch {
     public enum ResultType: String {
         case Popular = "popular"
         case Recent = "recent"
@@ -125,12 +123,12 @@ public extension TwitterSearch {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Tweets.Response? {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Tweets.Response {
             guard let
                 dictionary = object as? [String: AnyObject],
                 searchResult = SearchResult(dictionary: dictionary) else {
                     
-                    return nil
+                    throw DecodeError.Fail
             }
             
             return searchResult

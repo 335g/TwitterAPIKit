@@ -9,36 +9,30 @@
 import Foundation
 import APIKit
 
-public protocol StatusesGetRequest: Request {}
-public protocol StatusesPostRequest: Request {}
+public protocol StatusesGetRequest: RequestType {}
+public protocol StatusesPostRequest: RequestType {}
 
 public extension StatusesGetRequest {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/1.1/statuses")!
     }
-    public var requestBodyBuilder: RequestBodyBuilder {
-        return .JSON(writingOptions: .PrettyPrinted)
-    }
-    public var responseBodyParser: ResponseBodyParser {
-        return .JSON(readingOptions: .AllowFragments)
-    }
+	
+	public var dataParser: DataParserType {
+		return JSONDataParser(readingOptions: .AllowFragments)
+	}
 }
 
 public extension StatusesPostRequest {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/1.1/statuses")!
     }
-    public var requestBodyBuilder: RequestBodyBuilder {
-        return .URL(encoding: NSUTF8StringEncoding)
-    }
-    public var responseBodyParser: ResponseBodyParser {
-        return .JSON(readingOptions: .AllowFragments)
-    }
+	
+	public var dataParser: DataParserType {
+		return JSONDataParser(readingOptions: .AllowFragments)
+	}
 }
 
-public class TwitterStatuses: API {}
-
-public extension TwitterStatuses {
+public enum TwitterStatuses {
     
     ///
     /// https://dev.twitter.com/rest/reference/get/statuses/mentions_timeline
@@ -88,8 +82,8 @@ public extension TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> MentionsTimeline.Response? {
-            return self.tweetsFromObject(object, URLResponse)
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> MentionsTimeline.Response {
+            return try tweetsFromObject(object, URLResponse)
         }
     }
     
@@ -145,8 +139,8 @@ public extension TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> MentionsTimeline.Response? {
-            return self.tweetsFromObject(object, URLResponse)
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> MentionsTimeline.Response {
+            return try tweetsFromObject(object, URLResponse)
         }
     }
     
@@ -201,8 +195,8 @@ public extension TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> MentionsTimeline.Response? {
-            return self.tweetsFromObject(object, URLResponse)
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> MentionsTimeline.Response {
+            return try tweetsFromObject(object, URLResponse)
         }
     }
     
@@ -255,8 +249,8 @@ public extension TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> MentionsTimeline.Response? {
-            return self.tweetsFromObject(object, URLResponse)
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> MentionsTimeline.Response {
+            return try tweetsFromObject(object, URLResponse)
         }
     }
     
@@ -305,8 +299,8 @@ public extension TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> MentionsTimeline.Response? {
-            return self.tweetsFromObject(object, URLResponse)
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> MentionsTimeline.Response {
+            return try tweetsFromObject(object, URLResponse)
         }
     }
     
@@ -355,8 +349,8 @@ public extension TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Show.Response? {
-            return self.tweetFromObject(object, URLResponse)
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Show.Response {
+            return try tweetFromObject(object, URLResponse)
         }
     }
     
@@ -403,8 +397,8 @@ public extension TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Destroy.Response? {
-            return self.tweetFromObject(object, URLResponse)
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Destroy.Response {
+            return try tweetFromObject(object, URLResponse)
         }
     }
     
@@ -465,8 +459,8 @@ public extension TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Destroy.Response? {
-            return self.tweetFromObject(object, URLResponse)
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Destroy.Response {
+            return try tweetFromObject(object, URLResponse)
         }
     }
     
@@ -513,8 +507,8 @@ public extension TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Destroy.Response? {
-            return self.tweetFromObject(object, URLResponse)
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Destroy.Response {
+            return try tweetFromObject(object, URLResponse)
         }
     }
     
@@ -561,12 +555,12 @@ public extension TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) -> Retweeters.Response? {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Retweeters.Response {
             guard let
                 dictionary = object as? [String: AnyObject],
                 ids = RetweetIDs(dictionary: dictionary) else {
                     
-                    return nil
+                    throw DecodeError.Fail
             }
             
             return ids
