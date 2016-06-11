@@ -59,7 +59,8 @@ let client = OAuthAccessTokenClient(
     requestTokenSecret: response.requestTokenSecret
 )
 let accessTokenRequest = TwitterOAuth.AccessToken(client: client, verifier: verifier)
-TwitterOAuth.sendRequest(accessTokenRequest){ result in
+
+Session.sendRequest(accessTokenRequest){ result in
     switch result {
     case .Success(let response):
 
