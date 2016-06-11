@@ -131,9 +131,9 @@ class CallViewController: UIViewController {
             let request = TwitterDirectMessages.New(client, user: user, text: "test direct message")
             Session.sendRequest(request, handler: handle(TwitterDirectMessages.New.self))
 
-        default:
-            print("not implemented")
-            
+//        default:
+//            print("not implemented")
+			
                 ///
                 /// # memo
                 ///
