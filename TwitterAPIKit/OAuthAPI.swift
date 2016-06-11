@@ -9,8 +9,7 @@
 import Foundation
 import APIKit
 
-public protocol OAuthRequestType: RequestType {}
-public protocol OAuthPostRequestType: OAuthRequestType {}
+public protocol OAuthRequestType: TwitterAuthenticationRequestType {}
 
 public extension OAuthRequestType {
     public var baseURL: NSURL {
@@ -18,6 +17,7 @@ public extension OAuthRequestType {
     }
 }
 
+public protocol OAuthPostRequestType: OAuthRequestType {}
 public extension OAuthPostRequestType {
 	public var dataParser: DataParserType {
 		return FormURLEncodedDataParser(encoding: NSUTF8StringEncoding)
@@ -50,15 +50,8 @@ public enum TwitterOAuth {
         public var parameters: AnyObject? {
             return ["oauth_callback": callback]
         }
-        
-		public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-			return URLRequest
-        }
-        
-        public init(client: OAuthRequestTokenClient, callback: String){
+		
+		public init(client: OAuthRequestTokenClient, callback: String){
             self.client = client
             self.callback = callback
         }
@@ -90,15 +83,7 @@ public enum TwitterOAuth {
         public var parameters: AnyObject? {
             return ["oauth_verifier": verifier]
         }
-        
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
-        }
-        
+		
         public init(client: OAuthAccessTokenClient, verifier: String){
             self.client = client
             self.verifier = verifier

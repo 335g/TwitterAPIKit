@@ -57,6 +57,7 @@
 		84F1410F1D0C0E4400CF3FC4 /* TwitterAPIKit.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 84F141081D0C0E4400CF3FC4 /* TwitterAPIKit.xcconfig */; };
 		84F141111D0C0E4400CF3FC4 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 84F141091D0C0E4400CF3FC4 /* Release.xcconfig */; };
 		84F141131D0C0E4400CF3FC4 /* Test.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 84F1410A1D0C0E4400CF3FC4 /* Test.xcconfig */; };
+		84F141181D0C162400CF3FC4 /* TwitterAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F141171D0C162400CF3FC4 /* TwitterAPIRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,7 @@
 		84F141081D0C0E4400CF3FC4 /* TwitterAPIKit.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = TwitterAPIKit.xcconfig; sourceTree = "<group>"; };
 		84F141091D0C0E4400CF3FC4 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		84F1410A1D0C0E4400CF3FC4 /* Test.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Test.xcconfig; sourceTree = "<group>"; };
+		84F141171D0C162400CF3FC4 /* TwitterAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAPIRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +283,7 @@
 		847499501B4569F1008C3A6E /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				84F141171D0C162400CF3FC4 /* TwitterAPIRequest.swift */,
 				847499761B482E50008C3A6E /* DirectMessagesAPI.swift */,
 				847499791B484370008C3A6E /* FollowersAPI.swift */,
 				8474997C1B48B9FC008C3A6E /* FriendsAPI.swift */,
@@ -532,6 +535,7 @@
 				8474997A1B484370008C3A6E /* FollowersAPI.swift in Sources */,
 				847499841B48C8D7008C3A6E /* User.swift in Sources */,
 				84949AF01B4AA31C002DE195 /* ResponseType.swift in Sources */,
+				84F141181D0C162400CF3FC4 /* TwitterAPIRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,8 +587,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/xcconfigs/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Checkouts/xcconfigs/Carthage/Build/Mac",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -609,8 +611,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/xcconfigs/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Checkouts/xcconfigs/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = APIChecker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
@@ -726,9 +726,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-					"$(PROJECT_DIR)/Carthage/Checkouts/xcconfigs/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Checkouts/xcconfigs/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build",
 				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = TwitterAPIKit/Info.plist;
@@ -760,9 +758,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-					"$(PROJECT_DIR)/Carthage/Checkouts/xcconfigs/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Checkouts/xcconfigs/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build",
 				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = TwitterAPIKit/Info.plist;
@@ -789,9 +785,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-					"$(PROJECT_DIR)/Carthage/Checkouts/xcconfigs/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Checkouts/xcconfigs/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -812,9 +806,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-					"$(PROJECT_DIR)/Carthage/Checkouts/xcconfigs/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Checkouts/xcconfigs/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build",
 				);
 				INFOPLIST_FILE = TwitterAPIKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";

@@ -11,7 +11,7 @@ import APIKit
 
 // MARK: Request
 
-public protocol MutesRequestType: RequestType {}
+public protocol MutesRequestType: TwitterAPIRequestType {}
 public protocol MutesGetRequestType: MutesRequestType {}
 public protocol MutesPostRequestType: MutesRequestType {}
 
@@ -22,20 +22,12 @@ public extension MutesRequestType {
 }
 
 public extension MutesGetRequestType {
-	public var dataParser: DataParserType {
-		return JSONDataParser(readingOptions: .AllowFragments)
-	}
-	
 	public var method: APIKit.HTTPMethod {
 		return .GET
 	}
 }
 
 public extension MutesPostRequestType {
-	public var dataParser: DataParserType {
-		return JSONDataParser(readingOptions: .AllowFragments)
-	}
-	
 	public var method: APIKit.HTTPMethod {
 		return .POST
 	}
@@ -61,15 +53,7 @@ public enum TwitterMutes {
         public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
         }
-        
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
-        }
-        
+		
         public init(
             _ client: OAuthAPIClient,
             cursorStr: String = "-1"){
@@ -105,14 +89,6 @@ public enum TwitterMutes {
         private let _parameters: [String: AnyObject?]
         public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
-        }
-        
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
         }
         
         public init(
@@ -156,14 +132,6 @@ public enum TwitterMutes {
         private let _parameters: [String: AnyObject?]
         public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
-        }
-        
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
         }
         
         public init(

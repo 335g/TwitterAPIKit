@@ -11,7 +11,7 @@ import APIKit
 
 // MARK: Request
 
-public protocol SearchRequestType: RequestType {}
+public protocol SearchRequestType: TwitterAPIRequestType {}
 public protocol SearchGetRequestType: SearchRequestType {}
 
 public extension SearchRequestType {
@@ -21,10 +21,6 @@ public extension SearchRequestType {
 }
 
 public extension SearchGetRequestType {
-	public var dataParser: DataParserType {
-		return JSONDataParser(readingOptions: .AllowFragments)
-	}
-	
 	public var method: APIKit.HTTPMethod {
 		return .GET
 	}
@@ -86,14 +82,6 @@ public extension TwitterSearch {
         private let _parameters: [String: AnyObject?]
         public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
-        }
-        
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
         }
         
         public init(

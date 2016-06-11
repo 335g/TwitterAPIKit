@@ -11,7 +11,7 @@ import APIKit
 
 // MARK: - Request
 
-public protocol FriendsRequestType: RequestType {}
+public protocol FriendsRequestType: TwitterAPIRequestType {}
 public protocol FriendsGetRequestType: FriendsRequestType {}
 
 public extension FriendsRequestType {
@@ -21,10 +21,6 @@ public extension FriendsRequestType {
 }
 
 public extension FriendsGetRequestType {
-	public var dataParser: DataParserType {
-		return JSONDataParser(readingOptions: .AllowFragments)
-	}
-	
 	public var method: APIKit.HTTPMethod {
 		return .GET
 	}
@@ -49,14 +45,6 @@ public enum TwitterFriends {
         private let _parameters: [String: AnyObject?]
         public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
-        }
-        
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
         }
         
         public init(
@@ -102,14 +90,6 @@ public enum TwitterFriends {
         private let _parameters: [String: AnyObject?]
         public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
-        }
-        
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
         }
         
         public init(

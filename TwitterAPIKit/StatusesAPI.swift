@@ -9,7 +9,7 @@
 import Foundation
 import APIKit
 
-public protocol StatusesRequestType: RequestType {}
+public protocol StatusesRequestType: TwitterAPIRequestType {}
 public protocol StatusesGetRequestType: StatusesRequestType {}
 public protocol StatusesPostRequestType: StatusesRequestType {}
 
@@ -20,20 +20,12 @@ public extension StatusesRequestType {
 }
 
 public extension StatusesGetRequestType {
-	public var dataParser: DataParserType {
-		return JSONDataParser(readingOptions: .AllowFragments)
-	}
-	
 	public var method: APIKit.HTTPMethod {
 		return .GET
 	}
 }
 
 public extension StatusesPostRequestType {
-	public var dataParser: DataParserType {
-		return JSONDataParser(readingOptions: .AllowFragments)
-	}
-	
 	public var method: APIKit.HTTPMethod {
 		return .POST
 	}
@@ -57,14 +49,6 @@ public enum TwitterStatuses {
         private let _parameters: [String: AnyObject?]
         public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
-        }
-        
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
         }
         
         public init(
@@ -106,14 +90,6 @@ public enum TwitterStatuses {
         private let _parameters: [String: AnyObject?]
         public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
-        }
-        
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
         }
         
         public init(
@@ -161,14 +137,6 @@ public enum TwitterStatuses {
             return queryStringsFromParameters(_parameters)
         }
         
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
-        }
-        
         public init(
             _ client: OAuthAPIClient,
             count: Int,
@@ -211,14 +179,6 @@ public enum TwitterStatuses {
         private let _parameters: [String: AnyObject?]
         public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
-        }
-        
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
         }
         
         public init(
@@ -264,14 +224,6 @@ public enum TwitterStatuses {
             return queryStringsFromParameters(_parameters)
         }
         
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
-        }
-        
         public init(
             _ client: OAuthAPIClient,
             idStr: String,
@@ -307,14 +259,6 @@ public enum TwitterStatuses {
         private let _parameters: [String: AnyObject?]
         public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
-        }
-        
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
         }
         
         public init(
@@ -356,14 +300,6 @@ public enum TwitterStatuses {
             return queryStringsFromParameters(_parameters)
         }
         
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
-        }
-        
         public init(
             _ client: OAuthAPIClient,
             idStr: String,
@@ -397,14 +333,6 @@ public enum TwitterStatuses {
         private let _parameters: [String: AnyObject?]
         public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
-        }
-        
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
         }
         
         public init(
@@ -458,14 +386,6 @@ public enum TwitterStatuses {
             return queryStringsFromParameters(_parameters)
         }
         
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
-        }
-        
         public init(
             _ client: OAuthAPIClient,
             idStr: String,
@@ -499,14 +419,6 @@ public enum TwitterStatuses {
         private let _parameters: [String: AnyObject?]
         public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
-        }
-        
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
         }
         
         public init(

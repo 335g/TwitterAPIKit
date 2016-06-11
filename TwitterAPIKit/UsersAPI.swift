@@ -11,7 +11,7 @@ import APIKit
 
 // MARK: Request
 
-public protocol UsersRequestType: RequestType {}
+public protocol UsersRequestType: TwitterAPIRequestType {}
 public protocol UsersGetRequestType: UsersRequestType {}
 
 public extension UsersRequestType {
@@ -21,10 +21,6 @@ public extension UsersRequestType {
 }
 
 public extension UsersGetRequestType {
-	public var dataParser: DataParserType {
-		return JSONDataParser(readingOptions: .AllowFragments)
-	}
-	
 	public var method: APIKit.HTTPMethod {
 		return .GET
 	}
@@ -51,14 +47,6 @@ public enum TwitterUsers {
             return queryStringsFromParameters(_parameters)
         }
         
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
-        }
-        
         public init(
             _ client: OAuthAPIClient,
             users: [User],
@@ -73,7 +61,6 @@ public enum TwitterUsers {
         }
         
         public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Lookup.Response {
-            print(object)
             return try usersFromObject(object, URLResponse)
         }
     }
@@ -93,14 +80,6 @@ public enum TwitterUsers {
         private let _parameters: [String: AnyObject?]
         public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
-        }
-        
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
         }
         
         public init(

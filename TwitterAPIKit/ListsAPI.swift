@@ -11,7 +11,7 @@ import APIKit
 
 // MARK: - Request
 
-public protocol ListsRequestType: RequestType {}
+public protocol ListsRequestType: TwitterAPIRequestType {}
 public protocol ListsGetRequestType: ListsRequestType {}
 
 public extension ListsRequestType {
@@ -21,10 +21,6 @@ public extension ListsRequestType {
 }
 
 public extension ListsGetRequestType {
-	public var dataParser: DataParserType {
-		return JSONDataParser(readingOptions: .AllowFragments)
-	}
-	
 	public var method: APIKit.HTTPMethod {
 		return .GET
 	}
@@ -49,14 +45,6 @@ public enum TwitterLists {
         private let _parameters: [String: AnyObject?]
         public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
-        }
-        
-        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-            let url = self.baseURL.absoluteString + self.path
-            let header = client.authHeader(self.method, url, parameters, false)
-            URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
         }
         
         public init(

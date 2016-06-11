@@ -11,7 +11,7 @@ import APIKit
 
 // MARK: - Request
 
-public protocol DirectMessagesRequestType: RequestType {}
+public protocol DirectMessagesRequestType: TwitterAPIRequestType {}
 public protocol DirectMessagesGetRequestType: DirectMessagesRequestType {}
 public protocol DirectMessagesPostRequestType: DirectMessagesRequestType {}
 
@@ -22,20 +22,12 @@ public extension DirectMessagesRequestType {
 }
 
 public extension DirectMessagesGetRequestType {
-	public var dataParser: DataParserType {
-		return JSONDataParser(readingOptions: .AllowFragments)
-	}
-	
 	public var method: APIKit.HTTPMethod {
 		return .GET
 	}
 }
 
 public extension DirectMessagesPostRequestType {
-	public var dataParser: DataParserType {
-		return JSONDataParser(readingOptions: .AllowFragments)
-	}
-	
 	public var method: APIKit.HTTPMethod {
 		return .POST
 	}
@@ -60,14 +52,6 @@ public enum TwitterDirectMessages {
 		private let _parameters: [String: AnyObject?]
 		public var parameters: AnyObject? {
 			return queryStringsFromParameters(_parameters)
-		}
-		
-		public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-			let url = self.baseURL.absoluteString + self.path
-			let header = client.authHeader(self.method, url, parameters, false)
-			URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-			
-			return URLRequest
 		}
 		
 		public init(
@@ -110,14 +94,6 @@ public enum TwitterDirectMessages {
 			return queryStringsFromParameters(_parameters)
 		}
 		
-		public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-			let url = self.baseURL.absoluteString + self.path
-			let header = client.authHeader(self.method, url, parameters, false)
-			URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-			
-			return URLRequest
-		}
-		
 		public init(
 			_ client: OAuthAPIClient,
 			  idStr: String){
@@ -146,14 +122,6 @@ public enum TwitterDirectMessages {
 		private let _parameters: [String: AnyObject?]
 		public var parameters: AnyObject? {
 			return queryStringsFromParameters(_parameters)
-		}
-		
-		public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-			let url = self.baseURL.absoluteString + self.path
-			let header = client.authHeader(self.method, url, parameters, false)
-			URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-			
-			return URLRequest
 		}
 		
 		public init(
@@ -196,14 +164,6 @@ public enum TwitterDirectMessages {
 			return queryStringsFromParameters(_parameters)
 		}
 		
-		public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-			let url = self.baseURL.absoluteString + self.path
-			let header = client.authHeader(self.method, url, parameters, false)
-			URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-			
-			return URLRequest
-		}
-		
 		public init(
 			_ client: OAuthAPIClient,
 			  idStr: String,
@@ -236,14 +196,6 @@ public enum TwitterDirectMessages {
 		private let _parameters: [String: AnyObject?]
 		public var parameters: AnyObject? {
 			return queryStringsFromParameters(_parameters)
-		}
-		
-		public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
-			let url = self.baseURL.absoluteString + self.path
-			let header = client.authHeader(self.method, url, parameters, false)
-			URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-			
-			return URLRequest
 		}
 		
 		public init(
