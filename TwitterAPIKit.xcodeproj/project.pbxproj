@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		844381441AE5292D00EEC4B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844381431AE5292D00EEC4B2 /* AppDelegate.swift */; };
-		844381461AE5292D00EEC4B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844381451AE5292D00EEC4B2 /* ViewController.swift */; };
-		844381491AE5292D00EEC4B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844381471AE5292D00EEC4B2 /* Main.storyboard */; };
-		8443814B1AE5292D00EEC4B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8443814A1AE5292D00EEC4B2 /* Images.xcassets */; };
-		8443814E1AE5292D00EEC4B2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8443814C1AE5292D00EEC4B2 /* LaunchScreen.xib */; };
 		845CB4A81AD2A4C7006B3CE8 /* TwitterAPIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 845CB4A71AD2A4C7006B3CE8 /* TwitterAPIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		845CB4B51AD2A4C7006B3CE8 /* TwitterAPIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845CB4B41AD2A4C7006B3CE8 /* TwitterAPIKitTests.swift */; };
 		847499521B456A17008C3A6E /* OAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847499511B456A17008C3A6E /* OAuthClient.swift */; };
@@ -26,8 +21,6 @@
 		847499841B48C8D7008C3A6E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847499831B48C8D7008C3A6E /* User.swift */; };
 		847499871B48C8FD008C3A6E /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847499861B48C8FD008C3A6E /* Entities.swift */; };
 		8474998A1B48CFE6008C3A6E /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847499891B48CFE6008C3A6E /* Places.swift */; };
-		84782F861AE533C2005CDC2B /* CallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84782F851AE533C2005CDC2B /* CallViewController.swift */; };
-		84782F8F1AE54341005CDC2B /* APIsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84782F8E1AE54341005CDC2B /* APIsViewController.swift */; };
 		848A18481AE3B99D00CE4E6E /* FoundationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A18431AE3B99D00CE4E6E /* FoundationExtension.swift */; };
 		84949AEC1B4A9ECD002DE195 /* FriendshipsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949AEB1B4A9ECD002DE195 /* FriendshipsAPI.swift */; };
 		84949AF01B4AA31C002DE195 /* ResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949AEF1B4AA31C002DE195 /* ResponseType.swift */; };
@@ -41,17 +34,7 @@
 		84949B081B4BE04D002DE195 /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949B071B4BE04D002DE195 /* SearchAPI.swift */; };
 		84949B0B1B4BE199002DE195 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949B0A1B4BE199002DE195 /* SearchResult.swift */; };
 		84949B0E1B4BE86A002DE195 /* UsersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84949B0D1B4BE86A002DE195 /* UsersAPI.swift */; };
-		84E082B71AE52D5B00A32EEC /* AppInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84E082B61AE52D5B00A32EEC /* AppInfo.plist */; };
-		84E082B91AE52DE200A32EEC /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E082B81AE52DE200A32EEC /* AuthService.swift */; };
 		84F140A31D01EB1000CF3FC4 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F140A21D01EB1000CF3FC4 /* Error.swift */; };
-		84F140B71D0B988200CF3FC4 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F140B31D0B988200CF3FC4 /* APIKit.framework */; };
-		84F140B81D0B988200CF3FC4 /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F140B41D0B988200CF3FC4 /* Base32.framework */; };
-		84F140B91D0B988200CF3FC4 /* HMAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F140B51D0B988200CF3FC4 /* HMAC.framework */; };
-		84F140BA1D0B988200CF3FC4 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F140B61D0B988200CF3FC4 /* Result.framework */; };
-		84F140BF1D0B990E00CF3FC4 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F140BB1D0B990E00CF3FC4 /* APIKit.framework */; };
-		84F140C01D0B990E00CF3FC4 /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F140BC1D0B990E00CF3FC4 /* Base32.framework */; };
-		84F140C11D0B990E00CF3FC4 /* HMAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F140BD1D0B990E00CF3FC4 /* HMAC.framework */; };
-		84F140C21D0B990E00CF3FC4 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F140BE1D0B990E00CF3FC4 /* Result.framework */; };
 		84F1410B1D0C0E4400CF3FC4 /* Base.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 84F141061D0C0E4400CF3FC4 /* Base.xcconfig */; };
 		84F1410D1D0C0E4400CF3FC4 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 84F141071D0C0E4400CF3FC4 /* Debug.xcconfig */; };
 		84F1410F1D0C0E4400CF3FC4 /* TwitterAPIKit.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 84F141081D0C0E4400CF3FC4 /* TwitterAPIKit.xcconfig */; };
@@ -84,13 +67,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8443813F1AE5292D00EEC4B2 /* APIChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APIChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		844381421AE5292D00EEC4B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		844381431AE5292D00EEC4B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		844381451AE5292D00EEC4B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		844381481AE5292D00EEC4B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8443814A1AE5292D00EEC4B2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		8443814D1AE5292D00EEC4B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		845CB4A21AD2A4C7006B3CE8 /* TwitterAPIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TwitterAPIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		845CB4A61AD2A4C7006B3CE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		845CB4A71AD2A4C7006B3CE8 /* TwitterAPIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TwitterAPIKit.h; sourceTree = "<group>"; };
@@ -109,8 +85,6 @@
 		847499831B48C8D7008C3A6E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		847499861B48C8FD008C3A6E /* Entities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
 		847499891B48CFE6008C3A6E /* Places.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Places.swift; sourceTree = "<group>"; };
-		84782F851AE533C2005CDC2B /* CallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
-		84782F8E1AE54341005CDC2B /* APIsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIsViewController.swift; sourceTree = "<group>"; };
 		848A18431AE3B99D00CE4E6E /* FoundationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtension.swift; sourceTree = "<group>"; };
 		84949AEB1B4A9ECD002DE195 /* FriendshipsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendshipsAPI.swift; sourceTree = "<group>"; };
 		84949AEF1B4AA31C002DE195 /* ResponseType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseType.swift; sourceTree = "<group>"; };
@@ -124,17 +98,11 @@
 		84949B071B4BE04D002DE195 /* SearchAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAPI.swift; sourceTree = "<group>"; };
 		84949B0A1B4BE199002DE195 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		84949B0D1B4BE86A002DE195 /* UsersAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersAPI.swift; sourceTree = "<group>"; };
-		84E082B61AE52D5B00A32EEC /* AppInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppInfo.plist; sourceTree = "<group>"; };
-		84E082B81AE52DE200A32EEC /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		84F140A21D01EB1000CF3FC4 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		84F140B31D0B988200CF3FC4 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TwitterAPIKit-ahjcwwoarzyijagnzbbhunzgxnnb/Build/Products/Debug-iphonesimulator/APIKit.framework"; sourceTree = "<group>"; };
 		84F140B41D0B988200CF3FC4 /* Base32.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Base32.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TwitterAPIKit-ahjcwwoarzyijagnzbbhunzgxnnb/Build/Products/Debug-iphonesimulator/Base32.framework"; sourceTree = "<group>"; };
 		84F140B51D0B988200CF3FC4 /* HMAC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HMAC.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TwitterAPIKit-ahjcwwoarzyijagnzbbhunzgxnnb/Build/Products/Debug-iphonesimulator/HMAC.framework"; sourceTree = "<group>"; };
 		84F140B61D0B988200CF3FC4 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TwitterAPIKit-ahjcwwoarzyijagnzbbhunzgxnnb/Build/Products/Debug-iphonesimulator/Result.framework"; sourceTree = "<group>"; };
-		84F140BB1D0B990E00CF3FC4 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = ../Carthage/Build/Mac/APIKit.framework; sourceTree = "<group>"; };
-		84F140BC1D0B990E00CF3FC4 /* Base32.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Base32.framework; path = ../Carthage/Build/Mac/Base32.framework; sourceTree = "<group>"; };
-		84F140BD1D0B990E00CF3FC4 /* HMAC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HMAC.framework; path = ../Carthage/Build/Mac/HMAC.framework; sourceTree = "<group>"; };
-		84F140BE1D0B990E00CF3FC4 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = ../Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
 		84F140C31D0B993900CF3FC4 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = ../Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
 		84F140C41D0B993900CF3FC4 /* Base32.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Base32.framework; path = ../Carthage/Build/iOS/Base32.framework; sourceTree = "<group>"; };
 		84F140C51D0B993900CF3FC4 /* HMAC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HMAC.framework; path = ../Carthage/Build/iOS/HMAC.framework; sourceTree = "<group>"; };
@@ -149,25 +117,10 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8443813C1AE5292D00EEC4B2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				84F140B71D0B988200CF3FC4 /* APIKit.framework in Frameworks */,
-				84F140B81D0B988200CF3FC4 /* Base32.framework in Frameworks */,
-				84F140B91D0B988200CF3FC4 /* HMAC.framework in Frameworks */,
-				84F140BA1D0B988200CF3FC4 /* Result.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		845CB49E1AD2A4C7006B3CE8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F140BF1D0B990E00CF3FC4 /* APIKit.framework in Frameworks */,
-				84F140C01D0B990E00CF3FC4 /* Base32.framework in Frameworks */,
-				84F140C11D0B990E00CF3FC4 /* HMAC.framework in Frameworks */,
-				84F140C21D0B990E00CF3FC4 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,50 +134,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		84161C651B305AA3001CCFEE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				84F140BB1D0B990E00CF3FC4 /* APIKit.framework */,
-				84F140BC1D0B990E00CF3FC4 /* Base32.framework */,
-				84F140BD1D0B990E00CF3FC4 /* HMAC.framework */,
-				84F140BE1D0B990E00CF3FC4 /* Result.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		844381401AE5292D00EEC4B2 /* APIChecker */ = {
-			isa = PBXGroup;
-			children = (
-				844381431AE5292D00EEC4B2 /* AppDelegate.swift */,
-				844381451AE5292D00EEC4B2 /* ViewController.swift */,
-				84E082B81AE52DE200A32EEC /* AuthService.swift */,
-				84782F8E1AE54341005CDC2B /* APIsViewController.swift */,
-				84782F851AE533C2005CDC2B /* CallViewController.swift */,
-				844381471AE5292D00EEC4B2 /* Main.storyboard */,
-				8443814A1AE5292D00EEC4B2 /* Images.xcassets */,
-				8443814C1AE5292D00EEC4B2 /* LaunchScreen.xib */,
-				844381411AE5292D00EEC4B2 /* Supporting Files */,
-			);
-			path = APIChecker;
-			sourceTree = "<group>";
-		};
-		844381411AE5292D00EEC4B2 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				84161C651B305AA3001CCFEE /* Frameworks */,
-				844381421AE5292D00EEC4B2 /* Info.plist */,
-				84E082B61AE52D5B00A32EEC /* AppInfo.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		845CB4981AD2A4C7006B3CE8 = {
 			isa = PBXGroup;
 			children = (
 				84F141051D0C0E4400CF3FC4 /* Config */,
 				845CB4A41AD2A4C7006B3CE8 /* TwitterAPIKit */,
 				845CB4B11AD2A4C7006B3CE8 /* TwitterAPIKitTests */,
-				844381401AE5292D00EEC4B2 /* APIChecker */,
 				845CB4A31AD2A4C7006B3CE8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -234,7 +149,6 @@
 			children = (
 				845CB4A21AD2A4C7006B3CE8 /* TwitterAPIKit.framework */,
 				845CB4AD1AD2A4C7006B3CE8 /* TwitterAPIKitTests.xctest */,
-				8443813F1AE5292D00EEC4B2 /* APIChecker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -367,23 +281,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8443813E1AE5292D00EEC4B2 /* APIChecker */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8443815B1AE5292D00EEC4B2 /* Build configuration list for PBXNativeTarget "APIChecker" */;
-			buildPhases = (
-				8443813B1AE5292D00EEC4B2 /* Sources */,
-				8443813C1AE5292D00EEC4B2 /* Frameworks */,
-				8443813D1AE5292D00EEC4B2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = APIChecker;
-			productName = APIChecker;
-			productReference = 8443813F1AE5292D00EEC4B2 /* APIChecker.app */;
-			productType = "com.apple.product-type.application";
-		};
 		845CB4A11AD2A4C7006B3CE8 /* TwitterAPIKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 845CB4B81AD2A4C7006B3CE8 /* Build configuration list for PBXNativeTarget "TwitterAPIKit" */;
@@ -431,9 +328,6 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Yoshiki Kudo";
 				TargetAttributes = {
-					8443813E1AE5292D00EEC4B2 = {
-						CreatedOnToolsVersion = 6.3;
-					};
 					845CB4A11AD2A4C7006B3CE8 = {
 						CreatedOnToolsVersion = 6.3;
 					};
@@ -457,23 +351,11 @@
 			targets = (
 				845CB4A11AD2A4C7006B3CE8 /* TwitterAPIKit */,
 				845CB4AC1AD2A4C7006B3CE8 /* TwitterAPIKitTests */,
-				8443813E1AE5292D00EEC4B2 /* APIChecker */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8443813D1AE5292D00EEC4B2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				84E082B71AE52D5B00A32EEC /* AppInfo.plist in Resources */,
-				844381491AE5292D00EEC4B2 /* Main.storyboard in Resources */,
-				8443814E1AE5292D00EEC4B2 /* LaunchScreen.xib in Resources */,
-				8443814B1AE5292D00EEC4B2 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		845CB4A01AD2A4C7006B3CE8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -496,18 +378,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8443813B1AE5292D00EEC4B2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				84E082B91AE52DE200A32EEC /* AuthService.swift in Sources */,
-				844381461AE5292D00EEC4B2 /* ViewController.swift in Sources */,
-				84782F861AE533C2005CDC2B /* CallViewController.swift in Sources */,
-				84782F8F1AE54341005CDC2B /* APIsViewController.swift in Sources */,
-				844381441AE5292D00EEC4B2 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		845CB49D1AD2A4C7006B3CE8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -561,72 +431,7 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		844381471AE5292D00EEC4B2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				844381481AE5292D00EEC4B2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		8443814C1AE5292D00EEC4B2 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8443814D1AE5292D00EEC4B2 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		8443815C1AE5292D00EEC4B2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = APIChecker/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "jp.335g.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		8443815E1AE5292D00EEC4B2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = APIChecker/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "jp.335g.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		845CB4B61AD2A4C7006B3CE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84F141071D0C0E4400CF3FC4 /* Debug.xcconfig */;
@@ -822,15 +627,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8443815B1AE5292D00EEC4B2 /* Build configuration list for PBXNativeTarget "APIChecker" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8443815C1AE5292D00EEC4B2 /* Debug */,
-				8443815E1AE5292D00EEC4B2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		845CB49C1AD2A4C7006B3CE8 /* Build configuration list for PBXProject "TwitterAPIKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
