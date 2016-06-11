@@ -8,12 +8,6 @@ Thanks to
 - [APIKit](https://github.com/ishkawa/APIKit)
 - [HMAC](https://github.com/norio-nomura/HMAC)
 
-## Installation
-
-### Using Carthage
-- Insert `github "335g/TwitterAPIKit"` to your Cartfile.
-- Run `carthage udpate`
-
 ## How To
 
 1. [Authorize](#authorize)
@@ -29,7 +23,8 @@ let callback = "callback://"
 
 let client = OAuthRequestTokenClient(consumerKey: consumerKey, consumerSecret: consumerSecret) // (1)
 let requestTokenRequet = TwitterOAuth.RequestToken(client: client, callback: callback) // (2)
-TwitterOAuth.sendRequest(request){ result in
+
+Session.sendRequest(request){ result in
     switch result {
     case .Success(let response):
 
