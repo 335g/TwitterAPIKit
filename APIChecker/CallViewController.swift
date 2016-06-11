@@ -58,78 +58,78 @@ class CallViewController: UIViewController {
         switch api {
         case .StatusesMensionsTimeLine:
             let request = TwitterStatuses.MentionsTimeline(client, count: 1, trimUser: true)
-            TwitterStatuses.sendRequest(request, handler: handle(TwitterStatuses.MentionsTimeline.self))
+            Session.sendRequest(request, handler: handle(TwitterStatuses.MentionsTimeline.self))
             
         case .StatusesUserTimeLine:
             let user = User.withName("oreore_test1")
             let request = TwitterStatuses.UserTimeline(client, user: user, count: 1, trimUser: true)
-            TwitterStatuses.sendRequest(request, handler: handle(TwitterStatuses.UserTimeline.self))
+            Session.sendRequest(request, handler: handle(TwitterStatuses.UserTimeline.self))
             
         case .StatusesHomeTimeLine:
             let request = TwitterStatuses.HomeTimeline(client, count: 200)
-            TwitterStatuses.sendRequest(request, handler: handle(TwitterStatuses.HomeTimeline.self))
+            Session.sendRequest(request, handler: handle(TwitterStatuses.HomeTimeline.self))
             
         case .StatusesRetweetsOfMe:
             let request = TwitterStatuses.RetweetsOfMe(client, count: 1)
-            TwitterStatuses.sendRequest(request, handler: handle(TwitterStatuses.RetweetsOfMe.self))
+            Session.sendRequest(request, handler: handle(TwitterStatuses.RetweetsOfMe.self))
             
         case .StatusesUpdate:
             let request = TwitterStatuses.Update(client, status: "test")
-            TwitterStatuses.sendRequest(request, handler: handle(TwitterStatuses.Update.self))
+            Session.sendRequest(request, handler: handle(TwitterStatuses.Update.self))
             
         case .StatusesRetweet:
             let request = TwitterStatuses.Retweet(client, idStr: "612495859222118404")
-            TwitterStatuses.sendRequest(request, handler: handle(TwitterStatuses.Retweet.self))
+            Session.sendRequest(request, handler: handle(TwitterStatuses.Retweet.self))
             
         case .FriendsIds:
             let user = User.withName("oreore_test1")
             let request = TwitterFriends.Ids(client, user: user)
-            TwitterFriends.sendRequest(request, handler: handle(TwitterFriends.Ids.self))
+            Session.sendRequest(request, handler: handle(TwitterFriends.Ids.self))
             
         case .FriendsList:
             let user = User.withName("oreore_test1")
             let request = TwitterFriends.List(client, user: user)
-            TwitterFriends.sendRequest(request, handler: handle(TwitterFriends.List.self))
+            Session.sendRequest(request, handler: handle(TwitterFriends.List.self))
             
         case .FollowersIds:
             let user = User.withName("oreore_test1")
             let request = TwitterFollowers.Ids(client, user: user)
-            TwitterFollowers.sendRequest(request, handler: handle(TwitterFollowers.Ids.self))
+            Session.sendRequest(request, handler: handle(TwitterFollowers.Ids.self))
             
         case .FollowersList:
             let user = User.withName("oreore_test1")
             let request = TwitterFollowers.List(client, user: user)
-            TwitterFollowers.sendRequest(request, handler: handle(TwitterFollowers.List.self))
+            Session.sendRequest(request, handler: handle(TwitterFollowers.List.self))
             
         case .UsersLookup:
             let user = User.withName("oreore_test1")
             let request = TwitterUsers.Lookup(client, users: [user])
-            TwitterUsers.sendRequest(request, handler: handle(TwitterUsers.Lookup.self))
+            Session.sendRequest(request, handler: handle(TwitterUsers.Lookup.self))
             
         case .UsersShow:
             let user = User.withName("oreore_test1")
             let request = TwitterUsers.Show(client, user: user)
-            TwitterUsers.sendRequest(request, handler: handle(TwitterUsers.Show.self))
+            Session.sendRequest(request, handler: handle(TwitterUsers.Show.self))
             
         case .ListsMemberships:
             let user = User.withName("oreore_test2")
             let request = TwitterLists.Memberships(client, user: user)
-            TwitterLists.sendRequest(request, handler: handle(TwitterLists.Memberships.self))
+            Session.sendRequest(request, handler: handle(TwitterLists.Memberships.self))
             
         case .FriendshipsCreate:
             let user = User.withName("oreore_test1")
             let request = TwitterFriendships.Create(client, user: user)
-            TwitterFriendships.sendRequest(request, handler: handle(TwitterFriendships.Create.self))
+            Session.sendRequest(request, handler: handle(TwitterFriendships.Create.self))
             
         case .FriendshipsDestroy:
             let user = User.withName("oreore_test2")
             let request = TwitterFriendships.Destroy(client, user: user)
-            TwitterFriendships.sendRequest(request, handler: handle(TwitterFriendships.Destroy.self))
+            Session.sendRequest(request, handler: handle(TwitterFriendships.Destroy.self))
             
         case .DirectMessagesNew:
             let user = User.withName("oreore_test1")
             let request = TwitterDirectMessages.New(client, user: user, text: "test direct message")
-            TwitterDirectMessages.sendRequest(request, handler: handle(TwitterDirectMessages.New.self))
+            Session.sendRequest(request, handler: handle(TwitterDirectMessages.New.self))
 
         default:
             print("not implemented")
@@ -145,7 +145,7 @@ class CallViewController: UIViewController {
         }
     }
     
-    func handle<T: APIKit.Request>(type: T.Type) -> (Result<T.Response, APIError>) -> Void {
+    func handle<T: APIKit.RequestType>(type: T.Type) -> Result<T.Response, SessionTaskError> -> Void {
         return { [weak self] response in
             switch response {
             case .Success(let response):

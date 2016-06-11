@@ -11,15 +11,22 @@ import APIKit
 
 // MARK: Request
 
-public protocol UsersGetRequest: RequestType {}
+public protocol UsersRequestType: RequestType {}
+public protocol UsersGetRequestType: UsersRequestType {}
 
-public extension UsersGetRequest {
+public extension UsersRequestType {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/1.1/users")!
     }
-	
+}
+
+public extension UsersGetRequestType {
 	public var dataParser: DataParserType {
 		return JSONDataParser(readingOptions: .AllowFragments)
+	}
+	
+	public var method: APIKit.HTTPMethod {
+		return .GET
 	}
 }
 
@@ -30,27 +37,23 @@ public enum TwitterUsers {
     ///
     /// https://dev.twitter.com/rest/reference/get/users/lookup
     ///
-    public struct Lookup: UsersGetRequest, MultipleUsersResponesType {
+    public struct Lookup: UsersGetRequestType, MultipleUsersResponesType {
         public typealias Response = [Users]
         
         public let client: OAuthAPIClient
-        
-        public var method: APIKit.HTTPMethod {
-            return .GET
-        }
-        
+		
         public var path: String {
             return "/lookup.json"
         }
         
         private let _parameters: [String: AnyObject?]
-        public var parameters: [String: AnyObject] {
+        public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
         }
         
-        public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
             let url = self.baseURL.absoluteString + self.path
-            let header = client.authorizationHeader(self.method, url, parameters, false)
+            let header = client.authHeader(self.method, url, parameters, false)
             URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
             
             return URLRequest
@@ -78,27 +81,23 @@ public enum TwitterUsers {
     ///
     /// https://dev.twitter.com/rest/reference/get/users/show
     ///
-    public struct Show: UsersGetRequest, SingleUserResponseType {
+    public struct Show: UsersGetRequestType, SingleUserResponseType {
         public typealias Response = Users
         
         public let client: OAuthAPIClient
-        
-        public var method: APIKit.HTTPMethod {
-            return .GET
-        }
         
         public var path: String {
             return "/show.json"
         }
         
         private let _parameters: [String: AnyObject?]
-        public var parameters: [String: AnyObject] {
+        public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
         }
         
-        public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
             let url = self.baseURL.absoluteString + self.path
-            let header = client.authorizationHeader(self.method, url, parameters, false)
+            let header = client.authHeader(self.method, url, parameters, false)
             URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
             
             return URLRequest

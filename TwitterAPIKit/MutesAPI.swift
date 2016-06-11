@@ -11,26 +11,33 @@ import APIKit
 
 // MARK: Request
 
-public protocol MutesGetRequest: RequestType {}
-public protocol MutesPostRequest: RequestType {}
+public protocol MutesRequestType: RequestType {}
+public protocol MutesGetRequestType: MutesRequestType {}
+public protocol MutesPostRequestType: MutesRequestType {}
 
-public extension MutesGetRequest {
+public extension MutesRequestType {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/1.1/mutes/users")!
     }
-	
+}
+
+public extension MutesGetRequestType {
 	public var dataParser: DataParserType {
 		return JSONDataParser(readingOptions: .AllowFragments)
 	}
+	
+	public var method: APIKit.HTTPMethod {
+		return .GET
+	}
 }
 
-public extension MutesPostRequest {
-    public var baseURL: NSURL {
-        return NSURL(string: "https://api.twitter.com/1.1/mutes/users")!
-    }
-	
+public extension MutesPostRequestType {
 	public var dataParser: DataParserType {
 		return JSONDataParser(readingOptions: .AllowFragments)
+	}
+	
+	public var method: APIKit.HTTPMethod {
+		return .POST
 	}
 }
 
@@ -41,27 +48,23 @@ public enum TwitterMutes {
     ///
     /// https://dev.twitter.com/rest/reference/get/mutes/users/ids
     ///
-    public struct Ids: MutesGetRequest {
+    public struct Ids: MutesGetRequestType {
         public typealias Response = UserIDs
         
         public let client: OAuthAPIClient
-        
-        public var method: APIKit.HTTPMethod {
-            return .GET
-        }
         
         public var path: String {
             return "/ids.json"
         }
         
         private let _parameters: [String: AnyObject?]
-        public var parameters: [String: AnyObject] {
+        public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
         }
         
-        public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
             let url = self.baseURL.absoluteString + self.path
-            let header = client.authorizationHeader(self.method, url, parameters, false)
+            let header = client.authHeader(self.method, url, parameters, false)
             URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
             
             return URLRequest
@@ -90,27 +93,23 @@ public enum TwitterMutes {
     ///
     /// https://dev.twitter.com/rest/reference/get/mutes/users/list
     ///
-    public struct List: MutesGetRequest {
+    public struct List: MutesGetRequestType {
         public typealias Response = UsersList
         
         public let client: OAuthAPIClient
-        
-        public var method: APIKit.HTTPMethod {
-            return .GET
-        }
         
         public var path: String {
             return "/list.json"
         }
         
         private let _parameters: [String: AnyObject?]
-        public var parameters: [String: AnyObject] {
+        public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
         }
         
-        public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
             let url = self.baseURL.absoluteString + self.path
-            let header = client.authorizationHeader(self.method, url, parameters, false)
+            let header = client.authHeader(self.method, url, parameters, false)
             URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
             
             return URLRequest
@@ -145,27 +144,23 @@ public enum TwitterMutes {
     ///
     /// https://dev.twitter.com/rest/reference/post/mutes/users/create
     ///
-    public struct Create: MutesPostRequest, SingleUserResponseType {
+    public struct Create: MutesPostRequestType, SingleUserResponseType {
         public typealias Response = Users
         
         public let client: OAuthAPIClient
-        
-        public var method: APIKit.HTTPMethod {
-            return .POST
-        }
-        
+		
         public var path: String {
             return "/create.json"
         }
         
         private let _parameters: [String: AnyObject?]
-        public var parameters: [String: AnyObject] {
+        public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
         }
         
-        public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
             let url = self.baseURL.absoluteString + self.path
-            let header = client.authorizationHeader(self.method, url, parameters, false)
+            let header = client.authHeader(self.method, url, parameters, false)
             URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
             
             return URLRequest
@@ -187,27 +182,23 @@ public enum TwitterMutes {
     ///
     /// https://dev.twitter.com/rest/reference/post/mutes/users/destroy
     ///
-    public struct Destroy: MutesPostRequest, SingleUserResponseType {
+    public struct Destroy: MutesPostRequestType, SingleUserResponseType {
         public typealias Response = Users
         
         public let client: OAuthAPIClient
-        
-        public var method: APIKit.HTTPMethod {
-            return .POST
-        }
         
         public var path: String {
             return "/destory.json"
         }
         
         private let _parameters: [String: AnyObject?]
-        public var parameters: [String: AnyObject] {
+        public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
         }
         
-        public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
             let url = self.baseURL.absoluteString + self.path
-            let header = client.authorizationHeader(self.method, url, parameters, false)
+            let header = client.authHeader(self.method, url, parameters, false)
             URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
             
             return URLRequest

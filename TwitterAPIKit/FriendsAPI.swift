@@ -11,15 +11,22 @@ import APIKit
 
 // MARK: - Request
 
-public protocol FriendsGetRequest: RequestType {}
+public protocol FriendsRequestType: RequestType {}
+public protocol FriendsGetRequestType: FriendsRequestType {}
 
-public extension FriendsGetRequest {
+public extension FriendsRequestType {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/1.1/friends")!
     }
-	
+}
+
+public extension FriendsGetRequestType {
 	public var dataParser: DataParserType {
 		return JSONDataParser(readingOptions: .AllowFragments)
+	}
+	
+	public var method: APIKit.HTTPMethod {
+		return .GET
 	}
 }
 
@@ -30,27 +37,23 @@ public enum TwitterFriends {
     ///
     /// https://dev.twitter.com/rest/reference/get/friends/ids
     ///
-    public struct Ids: FriendsGetRequest {
+    public struct Ids: FriendsGetRequestType {
         public typealias Response = UserIDs
         
         public let client: OAuthAPIClient
-        
-        public var method: APIKit.HTTPMethod {
-            return .GET
-        }
         
         public var path: String {
             return "/ids.json"
         }
         
         private let _parameters: [String: AnyObject?]
-        public var parameters: [String: AnyObject] {
+        public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
         }
         
-        public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
             let url = self.baseURL.absoluteString + self.path
-            let header = client.authorizationHeader(self.method, url, parameters, false)
+            let header = client.authHeader(self.method, url, parameters, false)
             URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
             
             return URLRequest
@@ -87,27 +90,23 @@ public enum TwitterFriends {
     ///
     /// https://dev.twitter.com/rest/reference/get/friends/list
     ///
-    public struct List: FollowersGetRequest {
+    public struct List: FriendsGetRequestType {
         public typealias Response = UsersList
         
         public let client: OAuthAPIClient
-        
-        public var method: APIKit.HTTPMethod {
-            return .GET
-        }
         
         public var path: String {
             return "/list.json"
         }
         
         private let _parameters: [String: AnyObject?]
-        public var parameters: [String: AnyObject] {
+        public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
         }
         
-        public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
             let url = self.baseURL.absoluteString + self.path
-            let header = client.authorizationHeader(self.method, url, parameters, false)
+            let header = client.authHeader(self.method, url, parameters, false)
             URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
             
             return URLRequest

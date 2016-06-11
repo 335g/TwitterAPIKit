@@ -11,26 +11,33 @@ import APIKit
 
 // MARK: - Request
 
-public protocol FriendshipsGetRequest: RequestType {}
-public protocol FriendshipsPostRequest: RequestType {}
+public protocol FriendshipsRequestType: RequestType {}
+public protocol FriendshipsGetRequestType: FriendshipsRequestType {}
+public protocol FriendshipsPostRequestType: FriendshipsRequestType {}
 
-public extension FriendshipsGetRequest {
+public extension FriendshipsRequestType {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/1.1/friendships")!
     }
-	
+}
+
+public extension FriendshipsGetRequestType {
 	public var dataParser: DataParserType {
 		return JSONDataParser(readingOptions: .AllowFragments)
 	}
+	
+	public var method: APIKit.HTTPMethod {
+		return .GET
+	}
 }
 
-public extension FriendshipsPostRequest {
-    public var baseURL: NSURL {
-        return NSURL(string: "https://api.twitter.com/1.1/friendships")!
-    }
-	
+public extension FriendshipsPostRequestType {
 	public var dataParser: DataParserType {
 		return JSONDataParser(readingOptions: .AllowFragments)
+	}
+	
+	public var method: APIKit.HTTPMethod {
+		return .POST
 	}
 }
 
@@ -41,27 +48,23 @@ public enum TwitterFriendships {
 	///
 	/// https://dev.twitter.com/rest/reference/post/friendships/create
 	///
-	public struct Create: FriendshipsPostRequest, SingleUserResponseType {
+	public struct Create: FriendshipsPostRequestType, SingleUserResponseType {
 		public typealias Response = Users
 		
 		public let client: OAuthAPIClient
-		
-		public var method: APIKit.HTTPMethod {
-			return .POST
-		}
 		
 		public var path: String {
 			return "/create.json"
 		}
 		
 		private let _parameters: [String: AnyObject?]
-		public var parameters: [String: AnyObject] {
+		public var parameters: AnyObject? {
 			return queryStringsFromParameters(_parameters)
 		}
 		
-		public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+		public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
 			let url = self.baseURL.absoluteString + self.path
-			let header = client.authorizationHeader(self.method, url, parameters, false)
+			let header = client.authHeader(self.method, url, parameters, false)
 			URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
 			
 			return URLRequest
@@ -87,27 +90,23 @@ public enum TwitterFriendships {
 	///
 	/// https://dev.twitter.com/rest/reference/post/friendships/destroy
 	///
-	public struct Destroy: FriendshipsPostRequest, SingleUserResponseType {
+	public struct Destroy: FriendshipsPostRequestType, SingleUserResponseType {
 		public typealias Response = Users
 		
 		public let client: OAuthAPIClient
-		
-		public var method: APIKit.HTTPMethod {
-			return .POST
-		}
 		
 		public var path: String {
 			return "/destroy.json"
 		}
 		
 		private let _parameters: [String: AnyObject?]
-		public var parameters: [String: AnyObject] {
+		public var parameters: AnyObject? {
 			return queryStringsFromParameters(_parameters)
 		}
 		
-		public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+		public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
 			let url = self.baseURL.absoluteString + self.path
-			let header = client.authorizationHeader(self.method, url, parameters, false)
+			let header = client.authHeader(self.method, url, parameters, false)
 			URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
 			
 			return URLRequest

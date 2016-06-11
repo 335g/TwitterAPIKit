@@ -11,29 +11,35 @@ import APIKit
 
 // MARK: - Request
 
-public protocol DirectMessagesGetRequest: RequestType {}
-public protocol DirectMessagesPostRequest: RequestType {}
+public protocol DirectMessagesRequestType: RequestType {}
+public protocol DirectMessagesGetRequestType: DirectMessagesRequestType {}
+public protocol DirectMessagesPostRequestType: DirectMessagesRequestType {}
 
-public extension DirectMessagesGetRequest {
+public extension DirectMessagesRequestType {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/1.1")!
     }
-	
+}
+
+public extension DirectMessagesGetRequestType {
 	public var dataParser: DataParserType {
 		return JSONDataParser(readingOptions: .AllowFragments)
 	}
-}
-
-public extension DirectMessagesPostRequest {
-    public var baseURL: NSURL {
-        return NSURL(string: "https://api.twitter.com/1.1")!
-    }
 	
-	public var dataParser: DataParserType {
-		return JSONDataParser(readingOptions: .AllowFragments)
+	public var method: APIKit.HTTPMethod {
+		return .GET
 	}
 }
 
+public extension DirectMessagesPostRequestType {
+	public var dataParser: DataParserType {
+		return JSONDataParser(readingOptions: .AllowFragments)
+	}
+	
+	public var method: APIKit.HTTPMethod {
+		return .POST
+	}
+}
 
 // MARK: - API
 
@@ -42,27 +48,23 @@ public enum TwitterDirectMessages {
 	///
 	/// https://dev.twitter.com/rest/reference/get/direct_messages/sent
 	///
-	public struct Sent: DirectMessagesGetRequest, MultipleDirectMessagesResponseType {
+	public struct Sent: DirectMessagesGetRequestType, MultipleDirectMessagesResponseType {
 		public typealias Response = [DirectMessage]
 		
 		public let client: OAuthAPIClient
-		
-		public var method: APIKit.HTTPMethod {
-			return .GET
-		}
 		
 		public var path: String {
 			return "/direct_messages/sent.json"
 		}
 		
 		private let _parameters: [String: AnyObject?]
-		public var parameters: [String: AnyObject] {
+		public var parameters: AnyObject? {
 			return queryStringsFromParameters(_parameters)
 		}
 		
-		public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+		public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
 			let url = self.baseURL.absoluteString + self.path
-			let header = client.authorizationHeader(self.method, url, parameters, false)
+			let header = client.authHeader(self.method, url, parameters, false)
 			URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
 			
 			return URLRequest
@@ -94,27 +96,23 @@ public enum TwitterDirectMessages {
 	///
 	/// https://dev.twitter.com/rest/reference/get/direct_messages/show
 	///
-	public struct Show: DirectMessagesGetRequest, MultipleDirectMessagesResponseType {
+	public struct Show: DirectMessagesGetRequestType, MultipleDirectMessagesResponseType {
 		public typealias Response = [DirectMessage]
 		
 		public let client: OAuthAPIClient
-		
-		public var method: APIKit.HTTPMethod {
-			return .GET
-		}
 		
 		public var path: String {
 			return "/direct_messages/show.json"
 		}
 		
 		private let _parameters: [String: AnyObject?]
-		public var parameters: [String: AnyObject] {
+		public var parameters: AnyObject? {
 			return queryStringsFromParameters(_parameters)
 		}
 		
-		public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+		public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
 			let url = self.baseURL.absoluteString + self.path
-			let header = client.authorizationHeader(self.method, url, parameters, false)
+			let header = client.authHeader(self.method, url, parameters, false)
 			URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
 			
 			return URLRequest
@@ -136,27 +134,23 @@ public enum TwitterDirectMessages {
 	///
 	/// https://dev.twitter.com/rest/reference/get/direct_messages
 	///
-	public struct Received: DirectMessagesGetRequest, MultipleDirectMessagesResponseType {
+	public struct Received: DirectMessagesGetRequestType, MultipleDirectMessagesResponseType {
 		public typealias Response = [DirectMessage]
 		
 		public let client: OAuthAPIClient
-		
-		public var method: APIKit.HTTPMethod {
-			return .GET
-		}
 		
 		public var path: String {
 			return "/direct_messages.json"
 		}
 		
 		private let _parameters: [String: AnyObject?]
-		public var parameters: [String: AnyObject] {
+		public var parameters: AnyObject? {
 			return queryStringsFromParameters(_parameters)
 		}
 		
-		public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+		public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
 			let url = self.baseURL.absoluteString + self.path
-			let header = client.authorizationHeader(self.method, url, parameters, false)
+			let header = client.authHeader(self.method, url, parameters, false)
 			URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
 			
 			return URLRequest
@@ -188,27 +182,23 @@ public enum TwitterDirectMessages {
 	///
 	/// https://dev.twitter.com/rest/reference/post/direct_messages/destroy
 	///
-	public struct Destroy: DirectMessagesPostRequest, SingleDirectMessageResponseType {
+	public struct Destroy: DirectMessagesPostRequestType, SingleDirectMessageResponseType {
 		public typealias Response = DirectMessage
 		
 		public let client: OAuthAPIClient
-		
-		public var method: APIKit.HTTPMethod {
-			return .POST
-		}
 		
 		public var path: String {
 			return "/direct_messages/destroy.json"
 		}
 		
 		private let _parameters: [String: AnyObject?]
-		public var parameters: [String: AnyObject] {
+		public var parameters: AnyObject? {
 			return queryStringsFromParameters(_parameters)
 		}
 		
-		public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+		public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
 			let url = self.baseURL.absoluteString + self.path
-			let header = client.authorizationHeader(self.method, url, parameters, false)
+			let header = client.authHeader(self.method, url, parameters, false)
 			URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
 			
 			return URLRequest
@@ -234,27 +224,23 @@ public enum TwitterDirectMessages {
 	///
 	/// https://dev.twitter.com/rest/reference/post/direct_messages/new
 	///
-	public struct New: DirectMessagesPostRequest, SingleDirectMessageResponseType {
+	public struct New: DirectMessagesPostRequestType, SingleDirectMessageResponseType {
 		public typealias Response = DirectMessage
 		
 		public let client: OAuthAPIClient
-		
-		public var method: APIKit.HTTPMethod {
-			return .POST
-		}
 		
 		public var path: String {
 			return "/direct_messages/new.json"
 		}
 		
 		private let _parameters: [String: AnyObject?]
-		public var parameters: [String: AnyObject] {
+		public var parameters: AnyObject? {
 			return queryStringsFromParameters(_parameters)
 		}
 		
-		public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+		public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
 			let url = self.baseURL.absoluteString + self.path
-			let header = client.authorizationHeader(self.method, url, parameters, false)
+			let header = client.authHeader(self.method, url, parameters, false)
 			URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
 			
 			return URLRequest

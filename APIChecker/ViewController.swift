@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import APIKit
 import TwitterAPIKit
 
 class ViewController: UIViewController {
@@ -32,8 +33,8 @@ class ViewController: UIViewController {
         
         let client = OAuthRequestTokenClient(consumerKey: consumerKey, consumerSecret: consumerSecret)
         let requestTokenRequet = TwitterOAuth.RequestToken(client: client, callback: callback)
-        
-        TwitterOAuth.sendRequest(requestTokenRequet){ result in
+		
+        Session.sendRequest(requestTokenRequet){ result in
             switch result {
             case .Success(let response):
                 self.observer = NSNotificationCenter
@@ -51,7 +52,8 @@ class ViewController: UIViewController {
                                 requestTokenSecret: response.requestTokenSecret
                             )
                             let accessTokenRequest = TwitterOAuth.AccessToken(client: client, verifier: verifier)
-                            TwitterOAuth.sendRequest(accessTokenRequest){ result in
+							
+							Session.sendRequest(accessTokenRequest){ result in
                                 switch result {
                                 case .Success(let response):
                                     let client = OAuthAPIClient(
@@ -68,6 +70,10 @@ class ViewController: UIViewController {
                                     let viewController = navController.topViewController as! APIsViewController
                                     viewController.client = client
                                     viewController.user = user
+									
+									print(client)
+									print(user)
+									print(response)
                                         
                                     self?.presentViewController(navController, animated: true, completion: nil)
                                     

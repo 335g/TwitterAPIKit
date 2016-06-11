@@ -9,15 +9,22 @@
 import Foundation
 import APIKit
 
-public protocol OAuthPostRequest: RequestType {}
+public protocol OAuthRequestType: RequestType {}
+public protocol OAuthPostRequestType: OAuthRequestType {}
 
-public extension OAuthPostRequest {
+public extension OAuthRequestType {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/oauth")!
     }
-	
+}
+
+public extension OAuthPostRequestType {
 	public var dataParser: DataParserType {
-		return JSONDataParser(readingOptions: .AllowFragments)
+		return FormURLEncodedDataParser(encoding: NSUTF8StringEncoding)
+	}
+	
+	public var method: HTTPMethod {
+		return .POST
 	}
 }
 
@@ -30,30 +37,25 @@ public enum TwitterOAuth {
     ///
     /// https://dev.twitter.com/oauth/reference/post/oauth/request_token
     ///
-    public struct RequestToken: OAuthPostRequest {
+    public struct RequestToken: OAuthPostRequestType {
         public typealias Response = RequestTokenResult
         
         public let client: OAuthRequestTokenClient
         public let callback: String
         
-        public var method: HTTPMethod {
-            return .POST
-        }
-        
         public var path: String {
             return "/request_token"
         }
         
-        public var parameters: [String: AnyObject] {
+        public var parameters: AnyObject? {
             return ["oauth_callback": callback]
         }
         
-        public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+		public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
             let url = self.baseURL.absoluteString + self.path
-            let header = client.authorizationHeader(self.method, url, parameters, false)
+            let header = client.authHeader(self.method, url, parameters, false)
             URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
-            
-            return URLRequest
+			return URLRequest
         }
         
         public init(client: OAuthRequestTokenClient, callback: String){
@@ -62,7 +64,7 @@ public enum TwitterOAuth {
         }
         
         public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> RequestToken.Response {
-            guard
+			guard
                 let dictionary = object as? [String: AnyObject],
                 let result = RequestTokenResult(dictionary: dictionary) else {
                     
@@ -76,26 +78,22 @@ public enum TwitterOAuth {
     ///
     /// https://dev.twitter.com/oauth/reference/post/oauth/access_token
     ///
-    public struct AccessToken: OAuthPostRequest {
+    public struct AccessToken: OAuthPostRequestType {
         public typealias Response = AccessTokenResult
         public let client: OAuthAccessTokenClient
         public let verifier: String
-        
-        public var method: HTTPMethod {
-            return .POST
-        }
         
         public var path: String {
             return "/access_token"
         }
         
-        public var parameters: [String: AnyObject] {
+        public var parameters: AnyObject? {
             return ["oauth_verifier": verifier]
         }
         
-        public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
             let url = self.baseURL.absoluteString + self.path
-            let header = client.authorizationHeader(self.method, url, parameters, false)
+            let header = client.authHeader(self.method, url, parameters, false)
             URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
             
             return URLRequest

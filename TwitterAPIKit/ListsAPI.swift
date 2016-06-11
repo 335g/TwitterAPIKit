@@ -11,15 +11,22 @@ import APIKit
 
 // MARK: - Request
 
-public protocol ListsGetRequest: RequestType {}
+public protocol ListsRequestType: RequestType {}
+public protocol ListsGetRequestType: ListsRequestType {}
 
-public extension ListsGetRequest {
+public extension ListsRequestType {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/1.1/lists")!
     }
-	
+}
+
+public extension ListsGetRequestType {
 	public var dataParser: DataParserType {
 		return JSONDataParser(readingOptions: .AllowFragments)
+	}
+	
+	public var method: APIKit.HTTPMethod {
+		return .GET
 	}
 }
 
@@ -30,27 +37,23 @@ public enum TwitterLists {
     ///
     /// https://dev.twitter.com/rest/reference/get/lists/memberships
     ///
-    public struct Memberships: ListsGetRequest {
+    public struct Memberships: ListsGetRequestType {
         public typealias Response = ListsList
         
         public let client: OAuthAPIClient
-        
-        public var method: APIKit.HTTPMethod {
-            return .GET
-        }
         
         public var path: String {
             return "/memberships.json"
         }
         
         private let _parameters: [String: AnyObject?]
-        public var parameters: [String: AnyObject] {
+        public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
         }
         
-        public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
             let url = self.baseURL.absoluteString + self.path
-            let header = client.authorizationHeader(self.method, url, parameters, false)
+            let header = client.authHeader(self.method, url, parameters, false)
             URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
             
             return URLRequest

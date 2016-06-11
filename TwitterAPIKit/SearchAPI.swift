@@ -11,15 +11,22 @@ import APIKit
 
 // MARK: Request
 
-public protocol SearchGetRequest: RequestType {}
+public protocol SearchRequestType: RequestType {}
+public protocol SearchGetRequestType: SearchRequestType {}
 
-public extension SearchGetRequest {
+public extension SearchRequestType {
     public var baseURL: NSURL {
         return NSURL(string: "https://api.twitter.com/1.1/search")!
     }
-	
+}
+
+public extension SearchGetRequestType {
 	public var dataParser: DataParserType {
 		return JSONDataParser(readingOptions: .AllowFragments)
+	}
+	
+	public var method: APIKit.HTTPMethod {
+		return .GET
 	}
 }
 
@@ -67,27 +74,23 @@ public extension TwitterSearch {
     ///
     /// https://dev.twitter.com/rest/reference/get/search/tweets
     ///
-    public struct Tweets: SearchGetRequest {
+    public struct Tweets: SearchGetRequestType {
         public typealias Response = SearchResult
         
         public let client: OAuthAPIClient
-        
-        public var method: APIKit.HTTPMethod {
-            return .GET
-        }
-        
+		
         public var path: String {
             return "/tweets.json"
         }
         
         private let _parameters: [String: AnyObject?]
-        public var parameters: [String: AnyObject] {
+        public var parameters: AnyObject? {
             return queryStringsFromParameters(_parameters)
         }
         
-        public func configureURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
+        public func interceptURLRequest(URLRequest: NSMutableURLRequest) throws -> NSMutableURLRequest {
             let url = self.baseURL.absoluteString + self.path
-            let header = client.authorizationHeader(self.method, url, parameters, false)
+            let header = client.authHeader(self.method, url, parameters, false)
             URLRequest.setValue(header, forHTTPHeaderField: "Authorization")
             
             return URLRequest

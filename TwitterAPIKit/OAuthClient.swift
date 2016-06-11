@@ -17,7 +17,7 @@ public protocol OAuthClientType {
     var version: String { get }
     var signatureMethod: String { get }
     var dataEncoding: UInt { get }
-    func authorizationHeader(method: APIKit.HTTPMethod, _ url: String, _ params: [String: AnyObject], _ isUpload: Bool) -> String
+	func authorizationHeader(method: APIKit.HTTPMethod, _ url: String, _ params: [String: AnyObject], _ isUpload: Bool) -> String
     func signature(method: APIKit.HTTPMethod, _ url: String, _ params: [String: AnyObject]) -> String
     
     ///
@@ -42,6 +42,14 @@ public extension OAuthClientType {
     var dataEncoding: UInt {
         return NSUTF8StringEncoding
     }
+	
+	func authHeader(method: APIKit.HTTPMethod, _ url: String, _ params: AnyObject?, _ isUpload: Bool) -> String {
+		if let params = params as? [String: AnyObject] {
+			return authorizationHeader(method, url, params, isUpload)
+		}else {
+			return authorizationHeader(method, url, [:], isUpload)
+		}
+	}
     
     func authorizationHeader(method: APIKit.HTTPMethod, _ url: String, _ params: [String: AnyObject], _ isUpload: Bool) -> String {
         
