@@ -31,15 +31,12 @@ public extension StatusesPostRequestType {
 	}
 }
 
-
 public enum TwitterStatuses {
     
     ///
     /// https://dev.twitter.com/rest/reference/get/statuses/mentions_timeline
     ///
     public struct MentionsTimeline: StatusesGetRequestType, MultipleTweetsResponseType {
-        public typealias Response = [Tweets]
-        
         public let client: OAuthAPIClient
 		
         public var path: String {
@@ -70,7 +67,7 @@ public enum TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> MentionsTimeline.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> [Tweets] {
             return try tweetsFromObject(object, URLResponse)
         }
     }
@@ -79,8 +76,6 @@ public enum TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/get/statuses/user_timeline
     ///
     public struct UserTimeline: StatusesGetRequestType, MultipleTweetsResponseType {
-        public typealias Response = [Tweets]
-        
         public let client: OAuthAPIClient
         
         public var path: String {
@@ -115,7 +110,7 @@ public enum TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> MentionsTimeline.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> [Tweets] {
             return try tweetsFromObject(object, URLResponse)
         }
     }
@@ -124,8 +119,6 @@ public enum TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/get/statuses/home_timeline
     ///
     public struct HomeTimeline: StatusesGetRequestType, MultipleTweetsResponseType {
-        public typealias Response = [Tweets]
-        
         public let client: OAuthAPIClient
         
         public var path: String {
@@ -159,7 +152,7 @@ public enum TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> MentionsTimeline.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> [Tweets] {
             return try tweetsFromObject(object, URLResponse)
         }
     }
@@ -168,8 +161,6 @@ public enum TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/get/statuses/retweets_of_me
     ///
     public struct RetweetsOfMe: StatusesGetRequestType, MultipleTweetsResponseType {
-        public typealias Response = [Tweets]
-        
         public let client: OAuthAPIClient
 		
         public var path: String {
@@ -201,7 +192,7 @@ public enum TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> MentionsTimeline.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> [Tweets] {
             return try tweetsFromObject(object, URLResponse)
         }
     }
@@ -210,8 +201,6 @@ public enum TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/get/statuses/retweets/%3Aid
     ///
     public struct Retweets: StatusesGetRequestType, MultipleTweetsResponseType {
-        public typealias Response = [Tweets]
-        
         public let client: OAuthAPIClient
         public let idStr: String
 		
@@ -239,7 +228,7 @@ public enum TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> MentionsTimeline.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> [Tweets] {
             return try tweetsFromObject(object, URLResponse)
         }
     }
@@ -248,8 +237,6 @@ public enum TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/get/statuses/show/%3Aid
     ///
     public struct Show: StatusesGetRequestType, SingleTweetResponseType {
-        public typealias Response = Tweets
-        
         public let client: OAuthAPIClient
         
         public var path: String {
@@ -277,7 +264,7 @@ public enum TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Show.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Tweets {
             return try tweetFromObject(object, URLResponse)
         }
     }
@@ -286,8 +273,6 @@ public enum TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/post/statuses/destroy/%3Aid
     ///
     public struct Destroy: StatusesPostRequestType, SingleTweetResponseType {
-        public typealias Response = Tweets
-        
         public let client: OAuthAPIClient
         public let idStr: String
         
@@ -313,7 +298,7 @@ public enum TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Destroy.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Tweets {
             return try tweetFromObject(object, URLResponse)
         }
     }
@@ -322,8 +307,6 @@ public enum TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/post/statuses/update
     ///
     public struct Update: StatusesPostRequestType, SingleTweetResponseType {
-        public typealias Response = Tweets
-        
         public let client: OAuthAPIClient
 		
         public var path: String {
@@ -363,7 +346,7 @@ public enum TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Destroy.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Tweets {
             return try tweetFromObject(object, URLResponse)
         }
     }
@@ -372,8 +355,6 @@ public enum TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/post/statuses/retweet/%3Aid
     ///
     public struct Retweet: StatusesPostRequestType, SingleTweetResponseType {
-        public typealias Response = Tweets
-        
         public let client: OAuthAPIClient
         public let idStr: String
         
@@ -399,7 +380,7 @@ public enum TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Destroy.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Tweets {
             return try tweetFromObject(object, URLResponse)
         }
     }
@@ -408,8 +389,6 @@ public enum TwitterStatuses {
     /// https://dev.twitter.com/rest/reference/get/statuses/retweeters/ids
     ///
     public struct Retweeters: StatusesGetRequestType {
-        public typealias Response = RetweetIDs
-        
         public let client: OAuthAPIClient
         
         public var path: String {
@@ -435,7 +414,7 @@ public enum TwitterStatuses {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Retweeters.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> RetweetIDs {
             guard let
                 dictionary = object as? [String: AnyObject],
                 ids = RetweetIDs(dictionary: dictionary) else {

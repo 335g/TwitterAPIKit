@@ -71,8 +71,6 @@ public extension TwitterSearch {
     /// https://dev.twitter.com/rest/reference/get/search/tweets
     ///
     public struct Tweets: SearchGetRequestType {
-        public typealias Response = SearchResult
-        
         public let client: OAuthAPIClient
 		
         public var path: String {
@@ -114,7 +112,7 @@ public extension TwitterSearch {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Tweets.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> SearchResult {
             guard let
                 dictionary = object as? [String: AnyObject],
                 searchResult = SearchResult(dictionary: dictionary) else {

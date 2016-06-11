@@ -41,8 +41,6 @@ public enum TwitterFriendships {
 	/// https://dev.twitter.com/rest/reference/post/friendships/create
 	///
 	public struct Create: FriendshipsPostRequestType, SingleUserResponseType {
-		public typealias Response = Users
-		
 		public let client: OAuthAPIClient
 		
 		public var path: String {
@@ -66,7 +64,7 @@ public enum TwitterFriendships {
 			]
 		}
 		
-		public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Create.Response {
+		public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Users {
 			return try userFromObject(object, URLResponse)
 		}
 	}
@@ -75,8 +73,6 @@ public enum TwitterFriendships {
 	/// https://dev.twitter.com/rest/reference/post/friendships/destroy
 	///
 	public struct Destroy: FriendshipsPostRequestType, SingleUserResponseType {
-		public typealias Response = Users
-		
 		public let client: OAuthAPIClient
 		
 		public var path: String {
@@ -96,7 +92,7 @@ public enum TwitterFriendships {
 			self._parameters = [user.key: user.obj]
 		}
 		
-		public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Destroy.Response {
+		public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Users {
 			return try userFromObject(object, URLResponse)
 		}
 	}

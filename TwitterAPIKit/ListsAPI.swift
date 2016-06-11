@@ -34,8 +34,6 @@ public enum TwitterLists {
     /// https://dev.twitter.com/rest/reference/get/lists/memberships
     ///
     public struct Memberships: ListsGetRequestType {
-        public typealias Response = ListsList
-        
         public let client: OAuthAPIClient
         
         public var path: String {
@@ -63,7 +61,7 @@ public enum TwitterLists {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Memberships.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> ListsList {
             guard let
                 dictionary = object as? [String: AnyObject],
                 list = ListsList(dictionary: dictionary) else {

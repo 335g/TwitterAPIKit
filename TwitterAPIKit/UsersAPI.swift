@@ -34,8 +34,6 @@ public enum TwitterUsers {
     /// https://dev.twitter.com/rest/reference/get/users/lookup
     ///
     public struct Lookup: UsersGetRequestType, MultipleUsersResponesType {
-        public typealias Response = [Users]
-        
         public let client: OAuthAPIClient
 		
         public var path: String {
@@ -60,7 +58,7 @@ public enum TwitterUsers {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Lookup.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> [Users] {
             return try usersFromObject(object, URLResponse)
         }
     }
@@ -69,8 +67,6 @@ public enum TwitterUsers {
     /// https://dev.twitter.com/rest/reference/get/users/show
     ///
     public struct Show: UsersGetRequestType, SingleUserResponseType {
-        public typealias Response = Users
-        
         public let client: OAuthAPIClient
         
         public var path: String {
@@ -94,7 +90,7 @@ public enum TwitterUsers {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Show.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Users {
             return try userFromObject(object, URLResponse)
         }
     }

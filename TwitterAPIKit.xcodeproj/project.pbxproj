@@ -58,6 +58,7 @@
 		84F141111D0C0E4400CF3FC4 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 84F141091D0C0E4400CF3FC4 /* Release.xcconfig */; };
 		84F141131D0C0E4400CF3FC4 /* Test.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 84F1410A1D0C0E4400CF3FC4 /* Test.xcconfig */; };
 		84F141181D0C162400CF3FC4 /* TwitterAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F141171D0C162400CF3FC4 /* TwitterAPIRequest.swift */; };
+		84F1411A1D0C250F00CF3FC4 /* TokenResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F141191D0C250F00CF3FC4 /* TokenResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +145,7 @@
 		84F141091D0C0E4400CF3FC4 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		84F1410A1D0C0E4400CF3FC4 /* Test.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Test.xcconfig; sourceTree = "<group>"; };
 		84F141171D0C162400CF3FC4 /* TwitterAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAPIRequest.swift; sourceTree = "<group>"; };
+		84F141191D0C250F00CF3FC4 /* TokenResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +313,7 @@
 				84949AFB1B4AA4F1002DE195 /* DirectMessage.swift */,
 				84949B011B4AA998002DE195 /* ListsList.swift */,
 				84949B0A1B4BE199002DE195 /* SearchResult.swift */,
+				84F141191D0C250F00CF3FC4 /* TokenResult.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				84949AF31B4AA42B002DE195 /* RetweetIDs.swift in Sources */,
 				84949AEC1B4A9ECD002DE195 /* FriendshipsAPI.swift in Sources */,
 				8474997A1B484370008C3A6E /* FollowersAPI.swift in Sources */,
+				84F1411A1D0C250F00CF3FC4 /* TokenResult.swift in Sources */,
 				847499841B48C8D7008C3A6E /* User.swift in Sources */,
 				84949AF01B4AA31C002DE195 /* ResponseType.swift in Sources */,
 				84F141181D0C162400CF3FC4 /* TwitterAPIRequest.swift in Sources */,

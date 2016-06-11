@@ -121,8 +121,6 @@ public enum TwitterMutes {
     /// https://dev.twitter.com/rest/reference/post/mutes/users/create
     ///
     public struct Create: MutesPostRequestType, SingleUserResponseType {
-        public typealias Response = Users
-        
         public let client: OAuthAPIClient
 		
         public var path: String {
@@ -142,7 +140,7 @@ public enum TwitterMutes {
                 self._parameters = [user.key: user.obj]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Create.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Users {
             return try userFromObject(object, URLResponse)
         }
     }
@@ -151,8 +149,6 @@ public enum TwitterMutes {
     /// https://dev.twitter.com/rest/reference/post/mutes/users/destroy
     ///
     public struct Destroy: MutesPostRequestType, SingleUserResponseType {
-        public typealias Response = Users
-        
         public let client: OAuthAPIClient
         
         public var path: String {
@@ -180,7 +176,7 @@ public enum TwitterMutes {
                 self._parameters = [user.key: user.obj]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Destroy.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Users {
             return try userFromObject(object, URLResponse)
         }
     }

@@ -41,8 +41,6 @@ public enum TwitterDirectMessages {
 	/// https://dev.twitter.com/rest/reference/get/direct_messages/sent
 	///
 	public struct Sent: DirectMessagesGetRequestType, MultipleDirectMessagesResponseType {
-		public typealias Response = [DirectMessage]
-		
 		public let client: OAuthAPIClient
 		
 		public var path: String {
@@ -72,7 +70,7 @@ public enum TwitterDirectMessages {
 			]
 		}
 		
-		public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Sent.Response {
+		public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> [DirectMessage] {
 			return try directMessagesFromObject(object, URLResponse)
 		}
 	}
@@ -81,8 +79,6 @@ public enum TwitterDirectMessages {
 	/// https://dev.twitter.com/rest/reference/get/direct_messages/show
 	///
 	public struct Show: DirectMessagesGetRequestType, MultipleDirectMessagesResponseType {
-		public typealias Response = [DirectMessage]
-		
 		public let client: OAuthAPIClient
 		
 		public var path: String {
@@ -102,7 +98,7 @@ public enum TwitterDirectMessages {
 			self._parameters = ["id": idStr]
 		}
 		
-		public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Show.Response {
+		public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> [DirectMessage] {
 			return try directMessagesFromObject(object, URLResponse)
 		}
 	}
@@ -111,8 +107,6 @@ public enum TwitterDirectMessages {
 	/// https://dev.twitter.com/rest/reference/get/direct_messages
 	///
 	public struct Received: DirectMessagesGetRequestType, MultipleDirectMessagesResponseType {
-		public typealias Response = [DirectMessage]
-		
 		public let client: OAuthAPIClient
 		
 		public var path: String {
@@ -142,7 +136,7 @@ public enum TwitterDirectMessages {
 			]
 		}
 		
-		public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Received.Response {
+		public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> [DirectMessage] {
 			return try directMessagesFromObject(object, URLResponse)
 		}
 	}
@@ -151,8 +145,6 @@ public enum TwitterDirectMessages {
 	/// https://dev.twitter.com/rest/reference/post/direct_messages/destroy
 	///
 	public struct Destroy: DirectMessagesPostRequestType, SingleDirectMessageResponseType {
-		public typealias Response = DirectMessage
-		
 		public let client: OAuthAPIClient
 		
 		public var path: String {
@@ -176,7 +168,7 @@ public enum TwitterDirectMessages {
 			]
 		}
 		
-		public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Destroy.Response {
+		public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> DirectMessage {
 			return try directMessageFromObject(object, URLResponse)
 		}
 	}
@@ -185,8 +177,6 @@ public enum TwitterDirectMessages {
 	/// https://dev.twitter.com/rest/reference/post/direct_messages/new
 	///
 	public struct New: DirectMessagesPostRequestType, SingleDirectMessageResponseType {
-		public typealias Response = DirectMessage
-		
 		public let client: OAuthAPIClient
 		
 		public var path: String {
@@ -210,7 +200,7 @@ public enum TwitterDirectMessages {
 			]
 		}
 		
-		public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> New.Response {
+		public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> DirectMessage {
 			return try directMessageFromObject(object, URLResponse)
 		}
 	}

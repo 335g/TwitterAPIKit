@@ -34,8 +34,6 @@ public enum TwitterFriends {
     /// https://dev.twitter.com/rest/reference/get/friends/ids
     ///
     public struct Ids: FriendsGetRequestType {
-        public typealias Response = UserIDs
-        
         public let client: OAuthAPIClient
         
         public var path: String {
@@ -63,7 +61,7 @@ public enum TwitterFriends {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> Ids.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> UserIDs {
             guard let
                 dictionary = object as? [String: AnyObject],
                 ids = UserIDs(dictionary: dictionary) else {
@@ -79,8 +77,6 @@ public enum TwitterFriends {
     /// https://dev.twitter.com/rest/reference/get/friends/list
     ///
     public struct List: FriendsGetRequestType {
-        public typealias Response = UsersList
-        
         public let client: OAuthAPIClient
         
         public var path: String {
@@ -110,7 +106,7 @@ public enum TwitterFriends {
                 ]
         }
         
-        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> List.Response {
+        public func responseFromObject(object: AnyObject, URLResponse: NSHTTPURLResponse) throws -> UsersList {
             guard let
                 dictionary = object as? [String: AnyObject],
                 list = UsersList(dictionary: dictionary) else {
