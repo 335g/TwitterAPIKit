@@ -8,7 +8,7 @@ Thanks to
 - [APIKit](https://github.com/ishkawa/APIKit)
 - [HMAC](https://github.com/norio-nomura/HMAC)
 
-## How To
+## Use
 
 1. [Authorize](#authorize)
 1. [Access to API](#access-to-api)
