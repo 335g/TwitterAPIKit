@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0730"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "845CB4A11AD2A4C7006B3CE8"
+               BlueprintIdentifier = "84F142281D0CFCA900CF3FC4"
                BuildableName = "TwitterAPIKit.framework"
-               BlueprintName = "TwitterAPIKit"
+               BlueprintName = "TwitterAPIKit-iOS"
                ReferencedContainer = "container:TwitterAPIKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,6 +29,15 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "84F142281D0CFCA900CF3FC4"
+            BuildableName = "TwitterAPIKit.framework"
+            BlueprintName = "TwitterAPIKit-iOS"
+            ReferencedContainer = "container:TwitterAPIKit.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -45,9 +54,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "845CB4A11AD2A4C7006B3CE8"
+            BlueprintIdentifier = "84F142281D0CFCA900CF3FC4"
             BuildableName = "TwitterAPIKit.framework"
-            BlueprintName = "TwitterAPIKit"
+            BlueprintName = "TwitterAPIKit-iOS"
             ReferencedContainer = "container:TwitterAPIKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +72,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "845CB4A11AD2A4C7006B3CE8"
+            BlueprintIdentifier = "84F142281D0CFCA900CF3FC4"
             BuildableName = "TwitterAPIKit.framework"
-            BlueprintName = "TwitterAPIKit"
+            BlueprintName = "TwitterAPIKit-iOS"
             ReferencedContainer = "container:TwitterAPIKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
